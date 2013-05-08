@@ -11,27 +11,19 @@
                 <h2>@ViewBag.Message</h2>
             </hgroup>
             <h2></h2>
-                <form data-bind="submit: addRepresentative">
-                    <input style="font-size:larger;box-sizing:border-box" type="text" data-bind=" value: newRepresentative, valueUpdate: 'afterkeydown'" placeholder="So... Someone called?">
+                <form data-bind="submit: addRep">
+                    <input style="font-size:larger;box-sizing:border-box" type="text" data-bind=" value: newContact, valueUpdate: 'afterkeydown'" placeholder="So... Someone called?">
                 </form>
         </div>
     </section>
 }
 <section>
-                <div class="mark-all" >
-                    <!-- ko if: items().length -->
-                    <input id="markAll" type="checkbox" data-bind="checked: markAllCompleted">
-                    <label for="markAll">Mark all as complete </label>
-                    <!-- /ko -->
-                    <input id="includeArchived" type="checkbox" data-bind="checked:includeArchived">
-                    <label for="includeArchived" class="archived">Show archived</label>
-                </div>
-
-                <ul data-bind="foreach: items">
+                
+                <ul data-bind="foreach: representatives">
                     <li>
                         <div data-bind="visible: !isEditing()">
-                            <input type="checkbox" data-bind="checked: IsDone" />
-                            <label data-bind="text: Description, click: $parent.edit, css: { done: IsDone, archived: IsArchived }"></label>
+                            
+                            <label data-bind="text: Description, click: $parent.edit"></label>
                             <a href="#" data-bind="click: $parent.removeItem">X</a> 
                         </div>
                         <div data-bind="visible: isEditing">
@@ -42,7 +34,12 @@
                     </li>
                 </ul>
                 <div class="controlLinks">
-                    <a href="#" data-bind="click: purge">Purge</a>&nbsp;&nbsp;
-                    <a href="#" data-bind="click: reset">Reset</a>
+                    @*<a href="#" data-bind="click: purge">Purge</a>&nbsp;&nbsp;
+                    <a href="#" data-bind="click: reset">Reset</a>*@
                 </div>
 </section>
+<!-- App libraries -->
+        <script>            app = {};</script>
+        <script src="~/Scripts/app/logger.js"></script>
+        <script src="~/Scripts/app/dataservice.js"></script>
+        <script src="~/Scripts/app/viewModel.js"></script>

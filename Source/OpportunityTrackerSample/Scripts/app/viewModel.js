@@ -1,4 +1,4 @@
-﻿app.viewModel = (function (dataservice) {
+﻿app.viewModel = (function (logger, dataservice) {
 
     var vm = {
         newRep: ko.observable(),
@@ -16,16 +16,16 @@
 
     };
 
-    var contactModel = function(){
-        
-    }
+    //var contactModel = ko.observable(dataservice.newContact());
 
-    function initVM(){
-        
+    function initVM() {
+
     }
 
     function getReps_DS() {
-
+        dataservice.getReps()
+                    .then(querySuccess)
+                    .fail(queryFail);
     }
 
     function querySuccess(data) {
@@ -37,22 +37,26 @@
 
         });
 
-        //logger entry
+        logger.info("dataservice returned successfully");
     }
 
     function queryFail(error) {
-        //logger entry
+        logger.error(error.message, "Query failed");
     }
 
-    function addRep() {
+    function newContact() {
+        return dataservice.newContact();
+    }
+
+    function addRep(data) {
 
         var newRep = dataservice.createRep({
-            Contact: dataservice.newContact()
+            Contact: data
         });
     }
 
-    function updateRep() {
-        
+    function updateRep(data) {
+       
     }
 
 
@@ -75,4 +79,7 @@
         });
     }
 
-});
+})(app.logger, app.dataservice);
+
+// Bind viewModel to view in index.html
+ko.applyBindings(app.viewModel);
