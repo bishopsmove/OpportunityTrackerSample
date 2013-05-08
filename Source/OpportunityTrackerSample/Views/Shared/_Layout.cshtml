@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var logoBanner = ViewBag.Banner;
+}
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -12,7 +15,7 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
+                    <p class="site-title"><a href="#">@logoBanner</a></p>
                 </div>
                 <div class="float-right">
                     <section id="login">
@@ -37,12 +40,15 @@
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                 <div data-bind="visible: itemsLeftMessage, text: itemsLeftMessage"></div>
+                    <a href="#" data-bind="visible: archiveCompletedMessage, click: archiveCompletedItems, text: archiveCompletedMessage"></a>
+                    <p>&copy; @DateTime.Now.Year - Opportunity Tracking Sample app</p>
                 </div>
             </div>
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/knockout")
         @RenderSection("scripts", required: false)
     </body>
 </html>

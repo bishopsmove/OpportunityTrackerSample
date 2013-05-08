@@ -1,5 +1,7 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Banner = "Opportunity Tracking!";
+    ViewBag.Title = "Let's start here";
+    ViewBag.Message = "Utilizing BreezeJS, Wep API and KnockoutJS";
 }
 @section featured {
     <section class="featured">
@@ -8,38 +10,39 @@
                 <h1>@ViewBag.Title.</h1>
                 <h2>@ViewBag.Message</h2>
             </hgroup>
-            <p>
-                To learn more about ASP.NET MVC visit
-                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
-                If you have any questions about ASP.NET MVC visit
-                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
-            </p>
+            <h2></h2>
+                <form data-bind="submit: addRepresentative">
+                    <input style="font-size:larger;box-sizing:border-box" type="text" data-bind=" value: newRepresentative, valueUpdate: 'afterkeydown'" placeholder="So... Someone called?">
+                </form>
         </div>
     </section>
 }
-<h3>We suggest the following:</h3>
-<ol class="round">
-    <li class="one">
-        <h5>Getting Started</h5>
-        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-        enables a clean separation of concerns and that gives you full control over markup
-        for enjoyable, agile development. ASP.NET MVC includes many features that enable
-        fast, TDD-friendly development for creating sophisticated applications that use
-        the latest web standards.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more…</a>
-    </li>
+<section>
+                <div class="mark-all" >
+                    <!-- ko if: items().length -->
+                    <input id="markAll" type="checkbox" data-bind="checked: markAllCompleted">
+                    <label for="markAll">Mark all as complete </label>
+                    <!-- /ko -->
+                    <input id="includeArchived" type="checkbox" data-bind="checked:includeArchived">
+                    <label for="includeArchived" class="archived">Show archived</label>
+                </div>
 
-    <li class="two">
-        <h5>Add NuGet packages and jump-start your coding</h5>
-        NuGet makes it easy to install and update free libraries and tools.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Learn more…</a>
-    </li>
-
-    <li class="three">
-        <h5>Find Web Hosting</h5>
-        You can easily find a web hosting company that offers the right mix of features
-        and price for your applications.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
-    </li>
-</ol>
+                <ul data-bind="foreach: items">
+                    <li>
+                        <div data-bind="visible: !isEditing()">
+                            <input type="checkbox" data-bind="checked: IsDone" />
+                            <label data-bind="text: Description, click: $parent.edit, css: { done: IsDone, archived: IsArchived }"></label>
+                            <a href="#" data-bind="click: $parent.removeItem">X</a> 
+                        </div>
+                        <div data-bind="visible: isEditing">
+                            <form data-bind="event: { submit: $parent.completeEdit }">
+                                <input type="text" data-bind="value: Description, hasfocus: isEditing" />
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <div class="controlLinks">
+                    <a href="#" data-bind="click: purge">Purge</a>&nbsp;&nbsp;
+                    <a href="#" data-bind="click: reset">Reset</a>
+                </div>
+</section>
