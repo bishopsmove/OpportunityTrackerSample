@@ -35,64 +35,83 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime">
-      <HintPath>..\..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    <Reference Include="Antlr3.Runtime, Version=3.3.1.7705, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Breeze.WebApi">
-      <HintPath>..\..\packages\Breeze.WebApi.1.3.2\lib\Breeze.WebApi.dll</HintPath>
+    <Reference Include="Breeze.WebApi, Version=1.2.8.0, Culture=neutral, PublicKeyToken=f6085f1a45e2ac59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Breeze.WebApi.1.3.2\lib\Breeze.WebApi.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.AspNet">
-      <HintPath>..\..\packages\DotNetOpenAuth.AspNet.4.3.0.13117\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.3.0.13117\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.Core">
-      <HintPath>..\..\packages\DotNetOpenAuth.Core.4.3.0.13117\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.3.0.13117\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth">
-      <HintPath>..\..\packages\DotNetOpenAuth.OAuth.Core.4.3.0.13117\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.3.0.13117\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth.Consumer">
-      <HintPath>..\..\packages\DotNetOpenAuth.OAuth.Consumer.4.3.0.13117\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.3.0.13117\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.OpenId">
-      <HintPath>..\..\packages\DotNetOpenAuth.OpenId.Core.4.3.0.13117\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.3.0.13117\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty">
-      <HintPath>..\..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.3.0.13117\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.3.0.13117\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
     </Reference>
-    <Reference Include="Elmah">
-      <HintPath>..\..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
     </Reference>
-    <Reference Include="Irony">
-      <HintPath>..\..\packages\Breeze.WebApi.1.3.2\lib\Irony.dll</HintPath>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Irony, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ca48ace7223ead47, processorArchitecture=MSIL">
+      <HintPath>..\packages\Breeze.WebApi.1.3.2\lib\Irony.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Data.Edm">
-      <HintPath>..\..\packages\Microsoft.Data.Edm.5.4.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    <Reference Include="Microsoft.Data.Edm, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.4.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Data.OData">
-      <HintPath>..\..\packages\Microsoft.Data.OData.5.4.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    <Reference Include="Microsoft.Data.OData, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.4.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.5.0.4\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap">
-      <HintPath>..\..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
+    <Reference Include="StructureMap, Version=2.6.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap.AutoMocking">
-      <HintPath>..\..\packages\structuremap.automocking.2.6.4.1\lib\net40\StructureMap.AutoMocking.dll</HintPath>
+    <Reference Include="StructureMap.AutoMocking, Version=2.6.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.automocking.2.6.4.1\lib\net40\StructureMap.AutoMocking.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Spatial">
-      <HintPath>..\..\packages\System.Spatial.5.4.0\lib\net40\System.Spatial.dll</HintPath>
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.4.0\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -100,12 +119,41 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Http.OData">
-      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.OData.4.0.1\lib\net40\System.Web.Http.OData.dll</HintPath>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.4.0.1\lib\net40\System.Web.Http.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
@@ -117,70 +165,20 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="EntityFramework">
-      <HintPath>..\..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    <Reference Include="WebActivator, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivator.1.4\lib\NETFramework40\WebActivator.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http">
-      <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.WebRequest">
-      <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Optimization">
-      <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="WebActivator">
-      <HintPath>..\..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
-    </Reference>
-    <Reference Include="WebGrease">
-      <HintPath>..\..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    <Reference Include="WebGrease, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
     </Reference>
     <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
     </Reference>
     <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -190,17 +188,25 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="App_Start\StructureMapMvcFactory.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\DataController.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyResolver.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
+    <Compile Include="Filters\InitializeRepresentativesAttribute.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Opportunity.cs" />
+    <Compile Include="Models\Representative.cs" />
+    <Compile Include="Models\RepresentativeContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -267,11 +273,79 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Content\themes\south-street\images\ui-bg_glass_55_fcf0ba_1x400.png" />
+    <Content Include="Content\themes\south-street\images\ui-bg_gloss-wave_100_ece8da_500x100.png" />
+    <Content Include="Content\themes\south-street\images\ui-bg_highlight-hard_100_f5f3e5_1x100.png" />
+    <Content Include="Content\themes\south-street\images\ui-bg_highlight-hard_100_fafaf4_1x100.png" />
+    <Content Include="Content\themes\south-street\images\ui-bg_highlight-hard_15_459e00_1x100.png" />
+    <Content Include="Content\themes\south-street\images\ui-bg_highlight-hard_95_cccccc_1x100.png" />
+    <Content Include="Content\themes\south-street\images\ui-bg_highlight-soft_25_67b021_1x100.png" />
+    <Content Include="Content\themes\south-street\images\ui-bg_highlight-soft_95_ffedad_1x100.png" />
+    <Content Include="Content\themes\south-street\images\ui-bg_inset-soft_15_2b2922_1x100.png" />
+    <Content Include="Content\themes\south-street\images\ui-icons_808080_256x240.png" />
+    <Content Include="Content\themes\south-street\images\ui-icons_847e71_256x240.png" />
+    <Content Include="Content\themes\south-street\images\ui-icons_8dc262_256x240.png" />
+    <Content Include="Content\themes\south-street\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\south-street\images\ui-icons_eeeeee_256x240.png" />
+    <Content Include="Content\themes\south-street\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\south-street\jquery-ui.css" />
+    <Content Include="Content\themes\south-street\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\south-street\jquery.ui.all.css" />
+    <Content Include="Content\themes\south-street\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\south-street\jquery.ui.base.css" />
+    <Content Include="Content\themes\south-street\jquery.ui.button.css" />
+    <Content Include="Content\themes\south-street\jquery.ui.core.css" />
+    <Content Include="Content\themes\south-street\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\south-street\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\south-street\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\south-street\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\south-street\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\south-street\jquery.ui.slider.css" />
+    <Content Include="Content\themes\south-street\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\south-street\jquery.ui.theme.css" />
+    <Content Include="Content\themes\ui-darkness\images\ui-bg_flat_30_cccccc_40x100.png" />
+    <Content Include="Content\themes\ui-darkness\images\ui-bg_flat_50_5c5c5c_40x100.png" />
+    <Content Include="Content\themes\ui-darkness\images\ui-bg_glass_20_555555_1x400.png" />
+    <Content Include="Content\themes\ui-darkness\images\ui-bg_glass_40_0078a3_1x400.png" />
+    <Content Include="Content\themes\ui-darkness\images\ui-bg_glass_40_ffc73d_1x400.png" />
+    <Content Include="Content\themes\ui-darkness\images\ui-bg_gloss-wave_25_333333_500x100.png" />
+    <Content Include="Content\themes\ui-darkness\images\ui-bg_highlight-soft_80_eeeeee_1x100.png" />
+    <Content Include="Content\themes\ui-darkness\images\ui-bg_inset-soft_25_000000_1x100.png" />
+    <Content Include="Content\themes\ui-darkness\images\ui-bg_inset-soft_30_f58400_1x100.png" />
+    <Content Include="Content\themes\ui-darkness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\ui-darkness\images\ui-icons_4b8e0b_256x240.png" />
+    <Content Include="Content\themes\ui-darkness\images\ui-icons_a83300_256x240.png" />
+    <Content Include="Content\themes\ui-darkness\images\ui-icons_cccccc_256x240.png" />
+    <Content Include="Content\themes\ui-darkness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\ui-darkness\jquery-ui-1.8.16.custom.css" />
+    <Content Include="Content\themes\ui-darkness\jquery-ui-1.8.23.custom.css" />
+    <Content Include="Content\themes\ui-darkness\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\ui-darkness\jquery.ui.all.css" />
+    <Content Include="Content\themes\ui-darkness\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\ui-darkness\jquery.ui.base.css" />
+    <Content Include="Content\themes\ui-darkness\jquery.ui.button.css" />
+    <Content Include="Content\themes\ui-darkness\jquery.ui.core.css" />
+    <Content Include="Content\themes\ui-darkness\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\ui-darkness\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\ui-darkness\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\ui-darkness\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\ui-darkness\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\ui-darkness\jquery.ui.slider.css" />
+    <Content Include="Content\themes\ui-darkness\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\ui-darkness\jquery.ui.theme.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\app\logger.js" />
+    <Content Include="Scripts\app\dataservice.js" />
+    <Content Include="Scripts\app\viewModel.js" />
     <Content Include="Scripts\breeze.debug.js" />
     <Content Include="Scripts\breeze.intellisense.js" />
     <Content Include="Scripts\breeze.min.js" />
+    <Content Include="Scripts\breeze.savequeuing.js" />
+    <Content Include="Scripts\datajs-1.1.0.js" />
+    <Content Include="Scripts\datajs-1.1.0.min.js" />
     <Content Include="Scripts\jquery-2.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-2.0.0.js" />
     <Content Include="Scripts\jquery-2.0.0.min.js" />
@@ -285,6 +359,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\q.js" />
     <Content Include="Scripts\q.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
