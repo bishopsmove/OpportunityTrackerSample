@@ -26,8 +26,8 @@ namespace OpportunityTrackerSample.Filters
 
     }
 
-    public class RepresentativeInitializer : //DropCreateDatabaseAlways<RepresentativeContext>
-       DropCreateDatabaseIfModelChanges<RepresentativeContext>
+    public class RepresentativeInitializer : DropCreateDatabaseAlways<RepresentativeContext>
+       //DropCreateDatabaseIfModelChanges<RepresentativeContext>
     {
 
         protected override void Seed(RepresentativeContext context)
@@ -41,9 +41,9 @@ namespace OpportunityTrackerSample.Filters
 
             var reps = new[] {
                 // VendorId, Date, Value
-                CreateRep(),
-                CreateRep(),
-                CreateRep()
+                CreateRep("Smith", "Joe", "joe.smith@test.com", "6785551234"),
+                CreateRep("Smeeth", "Walter", "smeethw@test.org", "4045551234"),
+                CreateRep("Smythe", "Leslie", "leslie@test.net", "7705551234")
                 
            };
 
@@ -52,12 +52,38 @@ namespace OpportunityTrackerSample.Filters
             context.SaveChanges(); // Save 'em
         }
 
-        private static Representative CreateRep()
+        private static Representative CreateRep(string lname, string fname, string email, string phone)
         {
             _baseCreatedAtDate = _baseCreatedAtDate.AddMinutes(1);
-            return new Representative
+            var rep = new Representative
             {
+                CreateDate = _baseCreatedAtDate,
+                ModifiedDate = _baseCreatedAtDate
             };
+
+            var contact = new Contact
+            {
+                CreateDate = _baseCreatedAtDate,
+                ModifiedDate = _baseCreatedAtDate,
+                LastName = lname,
+                FirstName = fname
+            };
+            contact.ContactInfo.Add(new ContactInfo{
+                CreateDate = _baseCreatedAtDate,
+                ModifiedDate = _baseCreatedAtDate,
+                Category = "email",
+                Value = email
+            });
+            contact.ContactInfo.Add(new ContactInfo{
+                CreateDate = _baseCreatedAtDate,
+                ModifiedDate = _baseCreatedAtDate,
+                Category = "phone",
+                Value = phone
+            });
+
+            rep.Contacts.Add(contact);
+
+            return rep;
         }
 
         private static DateTime _baseCreatedAtDate;

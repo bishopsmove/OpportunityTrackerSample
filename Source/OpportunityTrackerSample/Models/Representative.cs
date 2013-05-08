@@ -10,6 +10,12 @@ namespace OpportunityTrackerSample.Models
 {
     public class Representative
     {
+        public Representative()
+        {
+            this.Contacts = new HashSet<Contact>();
+            this.Events = new HashSet<Event>();
+            this.Opportunities = new HashSet<Opportunity>();
+        }
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }

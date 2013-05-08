@@ -1,9 +1,9 @@
 ﻿app.dataservice = (function (breeze, logger) {
 
-    var serviceName = 'breeze/representatives'; // route to the same origin Web Api controller
+    var serviceName = 'breeze/data'; // route to the same origin Web Api controller
 
     // *** Cross origin service example  ***
-    //var serviceName = 'http://localhost:6550/breeze/representatives'; // controller in different origin
+    //var serviceName = 'http://localhost:6550/breeze/data'; // controller in different origin
 
     var manager = new breeze.EntityManager(serviceName);
     manager.enableSaveQueuing(true);
@@ -22,7 +22,7 @@
         deletOpp: deleteOpp,
         newContact: newContact,
         addContact: addContact,
-        updateContact: updateContact;
+        updateContact: updateContact,
         activateContact: activateContact,
         deleteContact: deleteContact,
         saveChanges: saveChanges
@@ -58,9 +58,7 @@
     function newContact(){
         return {
             firstName: "Johnny",
-            lastName: "Test",
-            number: "5552223456",
-            email: "j.test@test.com"
+            lastName: "Test"
         };
     }
 
