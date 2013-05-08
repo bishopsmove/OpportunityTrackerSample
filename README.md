@@ -1,5 +1,7 @@
 #OpportunityTrackerSample
 
+Currently successfully building at [Qhode](http://www.qhode.com/projects/e5361c6f-4283-4b7e-b350-a1b80070eccc).
+
 The intention for this application is to allow a job searcher (or similar entity-relationship) to track opportunities as a Contact Management System. 
 This is a EF5 CodeFirst effort with BreezeJS, KnockoutJS and jQuery/jQuery-UI.
 
