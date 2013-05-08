@@ -44,7 +44,7 @@
     }
 
     function updateRep(data) {
-        
+
     }
 
     function activateRep(data, activate) {
@@ -55,11 +55,28 @@
 
     }
 
-    function newContact(){
+    function newContact() {
         return {
-            firstName: "Johnny",
-            lastName: "Test"
+            firstName: ko.observable("Johnny"),
+            lastName: ko.observable("Test")
+            
         };
+    }
+
+    function addContact(data) {
+
+    }
+
+    function updateContact(data) {
+
+    }
+
+    function activateContact(data, activate) {
+
+    }
+
+    function deleteContact(data) {
+
     }
 
     function addOpp(data) {
@@ -130,4 +147,4 @@
         return message;
     }
 
-})(breeze, logger);
+})(breeze, app.logger);

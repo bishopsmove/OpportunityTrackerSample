@@ -26,8 +26,8 @@ namespace OpportunityTrackerSample.Filters
 
     }
 
-    public class RepresentativeInitializer : DropCreateDatabaseAlways<RepresentativeContext>
-       //DropCreateDatabaseIfModelChanges<RepresentativeContext>
+    public class RepresentativeInitializer : //DropCreateDatabaseAlways<RepresentativeContext>
+       DropCreateDatabaseIfModelChanges<RepresentativeContext>
     {
 
         protected override void Seed(RepresentativeContext context)

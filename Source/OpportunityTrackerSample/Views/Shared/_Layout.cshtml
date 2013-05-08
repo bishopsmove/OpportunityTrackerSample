@@ -40,8 +40,8 @@
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                 <div data-bind="visible: itemsLeftMessage, text: itemsLeftMessage"></div>
-                    <a href="#" data-bind="visible: archiveCompletedMessage, click: archiveCompletedItems, text: archiveCompletedMessage"></a>
+                 @*<div data-bind="visible: itemsLeftMessage, text: itemsLeftMessage"></div>
+                    <a href="#" data-bind="visible: archiveCompletedMessage, click: archiveCompletedItems, text: archiveCompletedMessage"></a>*@
                     <p>&copy; @DateTime.Now.Year - Opportunity Tracking Sample app</p>
                 </div>
             </div>
@@ -50,5 +50,10 @@
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/knockout")
         @RenderSection("scripts", required: false)
+        <!-- App libraries -->
+        <script>            app = {};</script>
+        <script src="~/Scripts/app/logger.js"></script>
+        <script src="~/Scripts/app/dataservice.js"></script>
+        <script src="~/Scripts/app/viewModel.js"></script>
     </body>
 </html>
