@@ -23,7 +23,9 @@
     function repModel(isEditing, id, contacts, events, opportunities) {
         this.ID = ko.observable(id);
         this.IsEditing = ko.observable(isEditing);
-        this.contacts = ko.observableArray(contacts);
+        this.contacts = ko.observableArray(ko.utils.arrayMap(contacts, function (contact) {
+            return new contactModel(contact.firstName, contact.lastName);
+        }));
         this.events = ko.observableArray(events);
         this.opportunities = ko.observableArray(opportunities);
     }
@@ -38,6 +40,8 @@
         }, this);
 
     }
+
+    ///TODO: Need models for Events and Opportunties, as well, or else need more test data to fill out data scaffolding
 
     initVM();
 
@@ -58,10 +62,15 @@
     function querySuccess(data) {
         //vm.repCollection([]);
 
-        data.results.forEach(function (item) {
-            extendItem(item);
-            vm.repCollection.push(new repModel(item.isEditing, item.ID, item.Contacts, item.Events, item.Opportunities));
+        //        data.results.forEach(function (item) {
+        //            extendItem(item);
+        //            vm.repCollection.push(new repModel(item.isEditing, item.ID, item.Contacts, item.Events, item.Opportunities));
 
+        //        });
+        //var reps = ko.utils.parseJson(data.XHR.responseText);
+        vm.repCollection = ko.util.arrayMap(ko.mapping.fromJS(data.XHR.responseJSON), function (rep) {
+            extendItem(rep);
+            return new repModel(false, rep.ID, rep.Contacts, rep.Events, rep.Opportunities);
         });
 
         logger.info("dataservice returned successfully");
