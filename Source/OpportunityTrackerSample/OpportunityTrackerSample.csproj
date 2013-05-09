@@ -338,6 +338,7 @@
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\clear.cache.gif" />
     <Content Include="Scripts\app\logger.js" />
     <Content Include="Scripts\app\dataservice.js" />
     <Content Include="Scripts\app\viewModel.js" />

@@ -29,11 +29,15 @@
     }
 
 
-    //    var contactModel = ko.observable(dataservice.newContact());
+    function contactModel(firstName, lastName) {
 
-    //    contactModel.fullname = ko.dependentObservable(function () {
-    //        return this.firstName() + " " + this.lastName();
-    //    }, contractModel);
+        this.firstName = ko.observable(firstName);
+        this.lastName = ko.observable(lastName);
+        this.fullname = ko.computed(function () {
+            return this.firstName() + " " + this.lastName();
+        }, this);
+
+    }
 
     initVM();
 
@@ -68,18 +72,15 @@
     }
 
     function newContact() {
-        var data = dataservice.newContact();
-        data.fullname = ko.dependentObservable(function () {
-
-            return this.firstName() + " " + this.lastName();
-        }, data);
-        return data;
+        return new contactModel("Johnny", "Test");
     }
 
     function addRep(data) {
 
         var newRep = dataservice.createRep({
-            Contact: data
+            Contact: function (data) {
+                return new contactModel(data.firstName, data.lastName);
+            }
         });
     }
 
