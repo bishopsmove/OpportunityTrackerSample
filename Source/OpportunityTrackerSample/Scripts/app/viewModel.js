@@ -2,109 +2,6 @@
 
 	var suspendItemSave = false;
 
-//	var testData = [{
-//		"$id": "1",
-//		"$type": "OpportunityTrackerSample.Models.Representative, OpportunityTrackerSample",
-//		"ID": 1,
-//		"CreateDate": "2013-04-03T14:31:00.000",
-//		"ModifiedDate": "2013-04-03T14:31:00.000",
-//		"Contacts": [{
-//			"$id": "2",
-//			"$type": "OpportunityTrackerSample.Models.Contact, OpportunityTrackerSample",
-//			"ID": 1,
-//			"LastName": "Smith",
-//			"FirstName": "Joe",
-//			"CreateDate": "2013-04-03T14:31:00.000",
-//			"ModifiedDate": "2013-04-03T14:31:00.000",
-//			"ContactInfo": [{
-//				"$id": "3",
-//				"$type": "OpportunityTrackerSample.Models.ContactInfo, OpportunityTrackerSample",
-//				"ID": 1,
-//				"Category": "email",
-//				"Value": "joe.smith@test.com",
-//				"CreateDate": "2013-04-03T14:31:00.000",
-//				"ModifiedDate": "2013-04-03T14:31:00.000"
-//			}, {
-//				"$id": "4",
-//				"$type": "OpportunityTrackerSample.Models.ContactInfo, OpportunityTrackerSample",
-//				"ID": 2,
-//				"Category": "phone",
-//				"Value": "6785551234",
-//				"CreateDate": "2013-04-03T14:31:00.000",
-//				"ModifiedDate": "2013-04-03T14:31:00.000"
-//			}]
-//		}],
-//		"Events": [],
-//		"Opportunities": []
-//	}, {
-//		"$id": "5",
-//		"$type": "OpportunityTrackerSample.Models.Representative, OpportunityTrackerSample",
-//		"ID": 2,
-//		"CreateDate": "2013-04-03T14:32:00.000",
-//		"ModifiedDate": "2013-04-03T14:32:00.000",
-//		"Contacts": [{
-//			"$id": "6",
-//			"$type": "OpportunityTrackerSample.Models.Contact, OpportunityTrackerSample",
-//			"ID": 2,
-//			"LastName": "Smeeth",
-//			"FirstName": "Walter",
-//			"CreateDate": "2013-04-03T14:32:00.000",
-//			"ModifiedDate": "2013-04-03T14:32:00.000",
-//			"ContactInfo": [{
-//				"$id": "7",
-//				"$type": "OpportunityTrackerSample.Models.ContactInfo, OpportunityTrackerSample",
-//				"ID": 3,
-//				"Category": "email",
-//				"Value": "smeethw@test.org",
-//				"CreateDate": "2013-04-03T14:32:00.000",
-//				"ModifiedDate": "2013-04-03T14:32:00.000"
-//			}, {
-//				"$id": "8",
-//				"$type": "OpportunityTrackerSample.Models.ContactInfo, OpportunityTrackerSample",
-//				"ID": 4,
-//				"Category": "phone",
-//				"Value": "4045551234",
-//				"CreateDate": "2013-04-03T14:32:00.000",
-//				"ModifiedDate": "2013-04-03T14:32:00.000"
-//			}]
-//		}],
-//		"Events": [],
-//		"Opportunities": []
-//	}, {
-//		"$id": "9",
-//		"$type": "OpportunityTrackerSample.Models.Representative, OpportunityTrackerSample",
-//		"ID": 3,
-//		"CreateDate": "2013-04-03T14:33:00.000",
-//		"ModifiedDate": "2013-04-03T14:33:00.000",
-//		"Contacts": [{
-//			"$id": "10",
-//			"$type": "OpportunityTrackerSample.Models.Contact, OpportunityTrackerSample",
-//			"ID": 3,
-//			"LastName": "Smythe",
-//			"FirstName": "Leslie",
-//			"CreateDate": "2013-04-03T14:33:00.000",
-//			"ModifiedDate": "2013-04-03T14:33:00.000",
-//			"ContactInfo": [{
-//				"$id": "11",
-//				"$type": "OpportunityTrackerSample.Models.ContactInfo, OpportunityTrackerSample",
-//				"ID": 5,
-//				"Category": "email",
-//				"Value": "leslie@test.net",
-//				"CreateDate": "2013-04-03T14:33:00.000",
-//				"ModifiedDate": "2013-04-03T14:33:00.000"
-//			}, {
-//				"$id": "12",
-//				"$type": "OpportunityTrackerSample.Models.ContactInfo, OpportunityTrackerSample",
-//				"ID": 6,
-//				"Category": "phone",
-//				"Value": "7705551234",
-//				"CreateDate": "2013-04-03T14:33:00.000",
-//				"ModifiedDate": "2013-04-03T14:33:00.000"
-//			}]
-//		}],
-//		"Events": [],
-//		"Opportunities": []
-//	}];
 
 	var vm = {
 		newRep: ko.observable(),
@@ -129,27 +26,37 @@
 		this.ID = ko.observable(id);
 		this.IsEditing = ko.observable(isEditing);
 		this.contacts = ko.observableArray(ko.utils.arrayMap(contacts, function (contact) {
-			return new contactModel(contact.FirstName, contact.LastName);
+			return new contactModel(contact.FirstName, contact.LastName, contact.ContactInfo);
 		}));
 		this.events = ko.observableArray(events);
 		this.opportunities = ko.observableArray(opportunities);
 	}
 
 
-	function contactModel(FirstName, LastName) {
+	function contactModel(FirstName, LastName, contactInfo) {
 		this.isEditing = ko.observable(false);
 		this.FirstName = ko.observable(FirstName || "");
 		this.LastName = ko.observable(LastName || "");
 		this.fullname = ko.computed(function () {
 			return this.FirstName() + " " + this.LastName();
 		}, this);
+		this.contactInfo = ko.observableArray(ko.utils.arrayMap(contactInfo, function (info) {
+			return new contactInfoModel(info.ID, info.Category, info.Value);
+		}));
 		this.editContact = function (item) {
 			edit(item);
 		};
 		this.completeEditContact = function (item) {
-		    completeEdit(item);
+			completeEdit(item);
 		};
 
+	}
+
+	function contactInfoModel(id, category, value) {
+		this.id = ko.observable(id);
+		this.category = ko.observable(category);
+		this.value = ko.observable(value);
+		this.isEditing = ko.observable(false);
 	}
 
 	///TODO: Need models for Events and Opportunties, as well, or else need more test data to fill out data scaffolding
@@ -160,10 +67,10 @@
 
 	function initVM() {
 		getReps_DS();
-//        vm.repCollection = ko.util.arrayMap(testData, function (rep) {
-//            extendItem(rep);
-//            return new repModel(false, rep.ID, rep.Contacts, rep.Events, rep.Opportunities);
-//        });
+		//        vm.repCollection = ko.util.arrayMap(testData, function (rep) {
+		//            extendItem(rep);
+		//            return new repModel(false, rep.ID, rep.Contacts, rep.Events, rep.Opportunities);
+		//        });
 	}
 
 	function getReps_DS() {
@@ -175,7 +82,7 @@
 
 
 	function querySuccess(data) {
-		
+
 		ko.utils.arrayForEach(data.XHR.responseJSON, function (rep) {
 			//console.log(rep);
 			vm.repCollection.push(new repModel(false, rep.ID, rep.Contacts, rep.Events, rep.Opportunities));

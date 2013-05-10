@@ -28,7 +28,7 @@
                  <!--<img id="hdrimage" alt="Representative" src="/images/clear.cache.gif">  -->
         </ul>
         <!--ko foreach: repCollection -->
-        <div data-bind="attr: { id: 'tab-' + ID() }">
+        <div class="tabcontent" data-bind="attr: { id: 'tab-' + ID() }">
             <h2 data-bind="text: ID()"></h2>
             <!--<label data-bind="text: ID">
             </label>-->
@@ -36,12 +36,18 @@
                 <li>
                     <div data-bind="visibile: !isEditing()">
                         <label data-bind="text: fullname, click: editContact">
-                        </label><button data-bind="click: $root.edit($data), html: 'Edit'"></button>
+                        </label>
+                        <div style="float: right;"  data-bind="foreach: contactInfo">
+                            <span data-bind="text: category"></span> <label data-bind="text: value"></label>
+                        </div>
                     </div>
                     <div data-bind="visible: isEditing()">
                         <form data-bind="event: { submit: completeEditContact }">
                         <input type="text" data-bind="value : FirstName, hasfocus: isEditing" />
                         <input type="text" data-bind="value: LastName, hasfocus: isEditing" />
+                        <div style="float: right;" data-bind="foreach: contactInfo">
+                            <input type="text" data-bind="value: category" />:<input data-bind="value: value" />
+                        </div>
                         </form>
                     </div>
                 </li>

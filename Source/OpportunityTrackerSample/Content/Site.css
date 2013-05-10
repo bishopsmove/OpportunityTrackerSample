@@ -334,6 +334,10 @@ aside {
     
 }
 
+.tabcontent {
+    height: 175px;
+}
+
 /* login page */
 #loginForm {
     border-right: solid 2px #c8c8c8;
