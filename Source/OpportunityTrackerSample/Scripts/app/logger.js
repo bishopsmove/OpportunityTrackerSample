@@ -10,27 +10,27 @@
     };
 
     function error(message) {
-        log("log-error", message);
+        toastr.error(message, "log-error");
     };
     function validationError(message) {
-        log("log-validation-error", message);
+        toastr.error(message, "log-validation-error");
     };
     function info(message) {
-        log("log-info", message);
+        toastr.info(message, "log-info");
     };
     function success(message) {
-        log("log-success", message);
+        toastr.success(message, "log-success");
     };
     function warning(message) {
-        log("log-warning", message);
+        toastr.warning(message, "log-warning");
     };
 
 
-    function log(cssClass, message) {
-        var logmessage = "<div class='" + cssClass + "'>" +
-            logCounter++ + ": " + message + "</div>";
-        $("#logmessages").append(logmessage);
-    }
+//    function log(cssClass, message) {
+//        var logmessage = "<div class='" + cssClass + "'>" +
+//            logCounter++ + ": " + message + "</div>";
+//        $("#logmessages").append(logmessage);
+//    }
 
     app.logger = logger;
 
