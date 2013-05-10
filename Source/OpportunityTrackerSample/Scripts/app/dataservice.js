@@ -32,8 +32,8 @@
     function getReps() {
 
         var query = breeze.EntityQuery
-                .from("Representatives")
-                .expand("Contacts, Opportunities, Events");
+                .from('Representatives')
+                .expand('Contacts, Opportunities, Events');
 
 
         return manager.executeQuery(query);

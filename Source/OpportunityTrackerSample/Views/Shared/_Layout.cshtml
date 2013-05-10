@@ -9,6 +9,7 @@
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/jqueryui/themes/base")
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
@@ -41,7 +42,8 @@
             <div class="content-wrapper">
                 <div class="float-left">
                  @*<div data-bind="visible: itemsLeftMessage, text: itemsLeftMessage"></div>
-                    <a href="#" data-bind="visible: archiveCompletedMessage, click: archiveCompletedItems, text: archiveCompletedMessage"></a>*@
+                    <a href="#" data-bind="visible: archiveCompletedMessage, click: archiveCompletedItems, text: archiveCompletedMessage"></a>
+                    <p class="error" data-bind="visible: errorMessage, text: errorMessage"></p>*@
                     <p>&copy; @DateTime.Now.Year - Opportunity Tracking Sample app</p>
                 </div>
             </div>

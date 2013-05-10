@@ -10,44 +10,47 @@
                 <h1>@ViewBag.Title.</h1>
                 <h2>@ViewBag.Message</h2>
             </hgroup>
-            <h2></h2>
-                <form data-bind="submit: addRep">
-                    <input style="font-size:larger;box-sizing:border-box" type="text" data-bind=" value: newContact.firstName, valueUpdate: 'afterkeydown'" placeholder="So... Someone called?">
-                </form>
+            <h2>
+            </h2>
+            <form data-bind="submit: addRep">
+            <input style="font-size: larger; box-sizing: border-box" type="text" data-bind=" value: newContact.firstName, valueUpdate: 'afterkeydown'"
+                placeholder="So... Someone called?">
+            </form>
         </div>
     </section>
 }
 <section>
-                <div data-bind="jqTabs: repCollection">
-                <ul data-bind="foreach: repCollection">
-                    <li>
-                        <a href="#tab-${ID}" data-bind="attr: { href: '#tab-' + ID() }"><img id="hdrimage" alt="Patient" src="/images/clear.cache.gif"></a> 
-                    </li>
-                </ul>
-
-                <!--ko foreach: repCollection -->
-                
-                        <ul data-bind="foreach: contacts">
-                            <li>
-                                <div data-bind="visible: !isEditing()">
-                            
-                                    <label data-bind="text: fullname, click: $parent.edit"></label>
-                                    <a href="#" data-bind="click: $parent.deleteContact">X</a> 
-                                </div>
-                                <div data-bind="visible: isEditing">
-                                    <form data-bind="event: { submit: $parent.completeEdit }">
-                                        <input type="text" data-bind="value : firstName, hasfocus: isEditing" />
-                                        <input type="text" data-bind="value: lastName, hasfocus: isEditing" />
-                                    </form>
-                                </div>
-                            </li>
-                        </ul>
-                    
-                <!-- /ko -->
-                </div>
-                <div class="controlLinks">
-                    @*<a href="#" data-bind="click: purge">Purge</a>&nbsp;&nbsp;
+    <div data-bind="jqTabs: repCollection">
+        <ul data-bind="foreach: repCollection">
+            <li><a href="#tab-${ID}" data-bind="attr: { href: '#tab-' + ID() }">
+                 <span class="tabimage" data-bind="text: ID"></span></a> 
+            </li>
+                 <!--<img id="hdrimage" alt="Representative" src="/images/clear.cache.gif">  -->
+        </ul>
+        <!--ko foreach: repCollection -->
+        <div data-bind="attr: { id: 'tab-' + ID() }">
+            <h2 data-bind="text: ID()"></h2>
+            <!--<label data-bind="text: ID">
+            </label>-->
+            <ul data-bind="foreach: contacts">
+                <li>
+                    <div data-bind="visibile: !isEditing()">
+                        <label data-bind="text: fullname, click: editContact">
+                        </label><button data-bind="click: $root.edit($data), html: 'Edit'"></button>
+                    </div>
+                    <div data-bind="visible: isEditing()">
+                        <form data-bind="event: { submit: completeEditContact }">
+                        <input type="text" data-bind="value : FirstName, hasfocus: isEditing" />
+                        <input type="text" data-bind="value: LastName, hasfocus: isEditing" />
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- /ko -->
+    </div>
+    <div class="controlLinks">
+        @*<a href="#" data-bind="click: purge">Purge</a>&nbsp;&nbsp;
                     <a href="#" data-bind="click: reset">Reset</a>*@
-                </div>
+    </div>
 </section>
-
