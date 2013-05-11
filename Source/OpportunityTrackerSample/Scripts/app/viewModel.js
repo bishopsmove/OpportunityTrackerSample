@@ -13,7 +13,8 @@
 		deleteRep: deleteRep,
 		deleteContact: deleteContact,
 		newOpp: ko.observable(),
-		edit: edit
+		edit: edit,
+		completeEdit: completeEdit
 		//        ,
 		//        addOpp: addOpp,
 		//        updateOpp: updateOpp,
@@ -24,12 +25,26 @@
 
 	function repModel(isEditing, id, contacts, events, opportunities) {
 		this.ID = ko.observable(id);
-		this.IsEditing = ko.observable(isEditing);
+		this.isEditing = ko.observable(isEditing);
 		this.contacts = ko.observableArray(ko.utils.arrayMap(contacts, function (contact) {
 			return new contactModel(contact.FirstName, contact.LastName, contact.ContactInfo);
 		}));
 		this.events = ko.observableArray(events);
 		this.opportunities = ko.observableArray(opportunities);
+//		this.edit = function (item) {
+//			if (item) {
+
+//			    logger.info("Now editting", "repModel");
+//			    item.isEditing(true);
+//			}
+//		};
+//		this.completeEdit = function (item) {
+//			if (item) {
+
+//			    logger.info("Finished editting", "repModel");
+//			    item.isEditing(false);
+//				}
+//		};
 	}
 
 
@@ -43,12 +58,7 @@
 		this.contactInfo = ko.observableArray(ko.utils.arrayMap(contactInfo, function (info) {
 			return new contactInfoModel(info.ID, info.Category, info.Value);
 		}));
-		this.editContact = function (item) {
-			edit(item);
-		};
-		this.completeEditContact = function (item) {
-			completeEdit(item);
-		};
+		
 
 	}
 
@@ -64,6 +74,26 @@
 	initVM();
 
 	return vm;
+
+	//    vm.prototype = {
+	//        edit: function (item) {
+	//            if (item) { item.isEditing(true); }
+	//        },
+
+	//        completeEdit: function (item) {
+	//            if (item) { item.isEditing(false); }
+	//        }
+	//    }
+
+		function edit(item) {
+			logger.info("Now editting", "viewModel");
+			item.isEditing(true);
+		}
+
+		function completeEdit(item) {
+			logger.info("Editting complete", "viewModel");
+			item.isEditing(false);
+		}
 
 	function initVM() {
 		getReps_DS();
@@ -145,12 +175,7 @@
 		});
 	}
 
-	function edit(item) {
-		if (item) { item.isEditing(true); }
-	}
-	function completeEdit(item) {
-		if (item) { item.isEditing(false); }
-	}
+
 
 
 })(app.logger, app.dataservice);
