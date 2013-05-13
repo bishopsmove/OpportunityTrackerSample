@@ -14,7 +14,8 @@
 		deleteContact: deleteContact,
 		newOpp: ko.observable(),
 		edit: edit,
-		completeEdit: completeEdit
+		completeEdit: completeEdit,
+		loadingComplete: ko.observable(false)
 		//        ,
 		//        addOpp: addOpp,
 		//        updateOpp: updateOpp,
@@ -31,20 +32,7 @@
 		}));
 		this.events = ko.observableArray(events);
 		this.opportunities = ko.observableArray(opportunities);
-//		this.edit = function (item) {
-//			if (item) {
 
-//			    logger.info("Now editting", "repModel");
-//			    item.isEditing(true);
-//			}
-//		};
-//		this.completeEdit = function (item) {
-//			if (item) {
-
-//			    logger.info("Finished editting", "repModel");
-//			    item.isEditing(false);
-//				}
-//		};
 	}
 
 
@@ -58,7 +46,7 @@
 		this.contactInfo = ko.observableArray(ko.utils.arrayMap(contactInfo, function (info) {
 			return new contactInfoModel(info.ID, info.Category, info.Value);
 		}));
-		
+
 
 	}
 
@@ -75,25 +63,27 @@
 
 	return vm;
 
-	//    vm.prototype = {
-	//        edit: function (item) {
-	//            if (item) { item.isEditing(true); }
-	//        },
 
-	//        completeEdit: function (item) {
-	//            if (item) { item.isEditing(false); }
-	//        }
-	//    }
+	function edit(item) {
+		logger.info("Now editting", "viewModel");
 
-		function edit(item) {
-			logger.info("Now editting", "viewModel");
-			item.isEditing(true);
+		this.isEditing(true);
+
+	}
+
+	function completeEdit(item) {
+		logger.info("Editting complete", "viewModel");
+
+		this.isEditing(false);
+
+	}
+
+	function loadingStatus(status) {
+
+		if (status) {
+			vm.loadingComplete(status);
 		}
-
-		function completeEdit(item) {
-			logger.info("Editting complete", "viewModel");
-			item.isEditing(false);
-		}
+	}
 
 	function initVM() {
 		getReps_DS();
@@ -117,8 +107,7 @@
 			//console.log(rep);
 			vm.repCollection.push(new repModel(false, rep.ID, rep.Contacts, rep.Events, rep.Opportunities));
 		});
-		//console.log(vm.repCollection().length);
-
+		vm.loadingComplete(true);
 		logger.info("dataservice returned successfully");
 	}
 
@@ -197,6 +186,19 @@ ko.bindingHandlers.jqTabs = {
 		}, 0);
 	}
 };
+
+ko.bindingHandlers.slideButton = {
+	init: function (element) {
+		$(element).hide();
+	},
+	update: function (element) {
+		$(element).show('slide', 1000);
+
+		$(element).hide('slide', 1000).fadeIn();
+	}
+};
+
+
 
 // Bind viewModel to view in index.html
 ko.applyBindings(app.viewModel);
