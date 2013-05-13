@@ -34,7 +34,8 @@ namespace OpportunityTrackerSample
 
             bundles.Add(new StyleBundle("~/Content/css")
                         .Include("~/Content/site.css")
-                        .Include("~/Content/toastr.css"));
+                        .Include("~/Content/toastr.css")
+                        .Include("~/Content/font-awesome.css"));
 
             bundles.Add(new StyleBundle("~/Content/jqueryui/themes/base").Include(
                         "~/Content/themes/base/jquery.ui.all.css"));

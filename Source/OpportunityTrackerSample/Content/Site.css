@@ -14,6 +14,24 @@ body {
     padding: 0;
 }
 
+#applicationHost {
+    position: absolute;
+    left: 50%;
+    width: 700px;
+    margin-top: 20px;
+    margin-left: -350px;
+    background: white;
+    
+    -o-box-shadow: rgba(0, 0, 0, 0.3) 0px 7px 30px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 7px 30px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 7px 30px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 7px 30px;
+    
+    -moz-border-radius: 0 0 6px 6px;
+    -webkit-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+}
+
 a {
     color: #333;
     outline: none;
@@ -35,6 +53,17 @@ header, footer, hgroup,
 nav, section {
     display: block;
 }
+
+.button {
+        background-color: #d3dce0;
+        border: 1px solid #787878;
+        cursor: pointer;
+        font-size: 1.2em;
+        font-weight: 600;
+        padding: 7px;
+        margin-right: 8px;
+        width: auto;
+    }
 
 mark {
     background-color: #a6dbed;
