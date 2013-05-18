@@ -7,15 +7,14 @@ using System.Text;
 
 namespace OpportunityTrackerSample.Models
 {
-    public class ContactInfo
+    public class ContactInfo : EntityBase
     {
 
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
         public string Category { get; set; }
         public string Value { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
+
+        public int ContactID { get; set; }
+        [ForeignKey("ContactID")]
+        public Contact AssociatedContact { get; set; }
     }
 }

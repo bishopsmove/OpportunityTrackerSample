@@ -7,13 +7,14 @@ using System.Text;
 
 namespace OpportunityTrackerSample.Models
 {
-    public class Event
+    public class Event : EntityBase
     {
-
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
+        public DateTime EventStart { get; set; }
+        public DateTime EventEnd { get; set; }
+        public string Title { get; set; }
+        
+        public int RepID { get; set; }
+        [ForeignKey("RepID")]
+        public Representative AssociatedRep { get; set; }
     }
 }

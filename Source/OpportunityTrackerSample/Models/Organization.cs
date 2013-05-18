@@ -7,13 +7,11 @@ using System.Text;
 
 namespace OpportunityTrackerSample.Models
 {
-    public class Opportunity : EntityBase
+    public class Organization : EntityBase
     {
+        public string Name { get; set; }
+        public string Address { get; set; }
 
         
-
-        public int RepID { get; set; }
-        [ForeignKey("RepID")]
-        public Representative AssociatedRep { get; set; }
     }
 }

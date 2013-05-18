@@ -8,7 +8,7 @@ using System.Web;
 
 namespace OpportunityTrackerSample.Models
 {
-    public class Representative
+    public class Representative : EntityBase
     {
         public Representative()
         {
@@ -16,15 +16,15 @@ namespace OpportunityTrackerSample.Models
             this.Events = new HashSet<Event>();
             this.Opportunities = new HashSet<Opportunity>();
         }
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
 
-
+        public virtual Organization Organization { get; set; }
+        [InverseProperty("AssociatedRep")]
         public virtual ICollection<Contact> Contacts { get; set; }
+
+        [InverseProperty("AssociatedRep")]
         public virtual ICollection<Event> Events { get; set; }
+
+        [InverseProperty("AssociatedRep")]
         public virtual ICollection<Opportunity> Opportunities { get; set; }
 
 

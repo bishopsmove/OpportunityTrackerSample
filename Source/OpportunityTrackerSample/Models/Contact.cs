@@ -7,21 +7,23 @@ using System.Text;
 
 namespace OpportunityTrackerSample.Models
 {
-    public class Contact
+    public class Contact : EntityBase
     {
         public Contact()
         {
             this.ContactInfo = new HashSet<ContactInfo>();
         }
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        
         public string LastName { get; set; }
         public string FirstName { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
 
+
+        [InverseProperty("AssociatedContact")]
         public virtual ICollection<ContactInfo> ContactInfo { get; set; }
+
+        public int RepID { get; set; }
+        [ForeignKey("RepID")]
+        public Representative AssociatedRep { get; set; }
 
     }
 }
