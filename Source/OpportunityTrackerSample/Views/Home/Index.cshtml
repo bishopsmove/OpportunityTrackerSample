@@ -13,9 +13,10 @@
             <h2>
             </h2>
             <form data-bind="submit: addRep">
-            <input style="font-size: larger; box-sizing: border-box" type="text" data-bind=" value: newContact.firstName, valueUpdate: 'afterkeydown'"
-                placeholder="So... Someone called?">
-            </form>
+            <!-- <input style="font-size: larger; box-sizing: border-box" type="submit"  data-bind=" value: newContact, valueUpdate: 'afterkeydown'"
+                placeholder="So... Someone called?"> --> 
+               <input type"submit" data-bind="value: newContact" placeholder="So... Opportunity knocked?"/>
+                           </form>
         </div>
     </section>
 }
@@ -33,9 +34,9 @@
             <h2 data-bind="text: ID()"></h2>
             <!--<label data-bind="text: ID">
             </label>-->
-            <ul data-bind="foreach: contacts ">
+            <ul data-bind="foreach: Contacts ">
                 <li >
-                    <div data-bind="visible: !isEditing(), click: $parents[1].edit">
+                    <div data-bind="click: $parents[1].edit">
                         <label data-bind="text: fullname">
                         </label><div id="edit" style="display:none;" ><a href="#" class="ui-button" data-bind=" click: $parents[1].edit, html: 'Edit'"></a></div>
                         <div id="edit" style="display:none;"><a class="button" href="#" data-bind=", html: 'Edit'"></a></div>
