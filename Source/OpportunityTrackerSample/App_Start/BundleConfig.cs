@@ -21,7 +21,7 @@ namespace OpportunityTrackerSample
 
             bundles.Add(new ScriptBundle("~/bundles/knockout")
                 .Include("~/Scripts/knockout-{version}.debug.js")
-                .Include("~/Scripts/knockout.mapping-latest.debug.js")
+                //.Include("~/Scripts/knockout.mapping-latest.debug.js")
                 .Include("~/Scripts/toastr.js")
                 .Include("~/Scripts/q.js")
                 .Include("~/Scripts/breeze.debug.js")
