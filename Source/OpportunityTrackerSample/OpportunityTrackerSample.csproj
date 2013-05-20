@@ -207,6 +207,7 @@
     <Compile Include="Models\ContactInfo.cs" />
     <Compile Include="Models\EntityBase.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Opportunity.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\Representative.cs" />

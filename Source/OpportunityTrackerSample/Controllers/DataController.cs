@@ -38,7 +38,8 @@ namespace OpportunityTrackerSample.Controllers
                                     .Include(r => r.Organization)
                                     .Include(r => r.Contacts.Select(c => c.ContactInfo))
                                     .Include(r => r.Events)
-                                    .Include(r => r.Opportunities);
+                                    .Include(r => r.Opportunities)
+                                    .OrderBy(r => r.Organization.Name);
         }
 
         

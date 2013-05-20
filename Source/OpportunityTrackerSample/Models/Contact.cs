@@ -17,6 +17,8 @@ namespace OpportunityTrackerSample.Models
         public string LastName { get; set; }
         public string FirstName { get; set; }
 
+        public virtual int Rating { get; set; }
+
 
         [InverseProperty("AssociatedContact")]
         public virtual ICollection<ContactInfo> ContactInfo { get; set; }
