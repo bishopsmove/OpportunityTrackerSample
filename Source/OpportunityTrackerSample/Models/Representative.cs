@@ -17,6 +17,7 @@ namespace OpportunityTrackerSample.Models
             this.Opportunities = new HashSet<Opportunity>();
         }
 
+        [InverseProperty("AssociatedRep")]
         public virtual Organization Organization { get; set; }
         [InverseProperty("AssociatedRep")]
         public virtual ICollection<Contact> Contacts { get; set; }

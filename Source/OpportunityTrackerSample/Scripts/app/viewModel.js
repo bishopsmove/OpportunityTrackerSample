@@ -15,7 +15,8 @@
         newOpp: ko.observable(),
         edit: edit,
         completeEdit: completeEdit,
-        loadingComplete: ko.observable(false)
+        loadingComplete: ko.observable(false),
+        getTabName: getTabName
         //        ,
         //        addOpp: addOpp,
         //        updateOpp: updateOpp,
@@ -28,7 +29,7 @@
         this.ID = ko.observable(id || "");
         //this.isEditing = ko.observable(isEditing);
         this.contacts = ko.observableArray(ko.utils.arrayMap(contacts, function (contact) {
-            var _contact = new contactModel(contact.FirstName, contact.LastName, contact.ContactInfo, contact.entityAspect);
+            var _contact = new contactModel(contact.FirstName(), contact.LastName(), contact.ContactInfo(), contact.entityAspect);
             extendItem(_contact);
             return _contact;
         }));
@@ -40,14 +41,14 @@
 
 
     function contactModel(FirstName, LastName, contactInfo, entityAspect) {
-        this.isEditing = ko.observable(false);
+        //this.isEditing = ko.observable(false);
         this.FirstName = ko.observable(FirstName || "");
         this.LastName = ko.observable(LastName || "");
         this.fullname = ko.computed(function () {
             return this.FirstName() + " " + this.LastName();
         }, this);
         this.contactInfo = ko.observableArray(ko.utils.arrayMap(contactInfo, function (info) {
-            var _info = new contactInfoModel(info.ID, info.Category, info.Value, info.entityAspect);
+            var _info = new contactInfoModel(info.ID(), info.Category(), info.Value(), info.entityAspect);
             extendItem(_info);
             return _info;
         }));
@@ -79,9 +80,16 @@
 
     function completeEdit(item) {
         logger.info("Editting complete", "viewModel");
-
+        dataservice.saveChanges();
         this.isEditing(false);
 
+    }
+
+    function getTabName(item) {
+
+        var orgName = ko.observable(item.Organization.Name || item.Contacts()[0].LastName());
+
+        return orgName;
     }
 
     function loadingStatus(status) {
@@ -112,8 +120,12 @@
         //ko.utils.arrayForEach(data.XHR.responseJSON, function (rep) {
         //console.log(rep);
         data.results.forEach(function (rep) {
-            var newRep = new repModel(rep.ID(), rep.Contacts(), rep.Events(), rep.Opportunities(), rep.entityAspect);
+            //var newRep = new repModel(rep.ID(), rep.Contacts(), rep.Events(), rep.Opportunities(), rep.entityAspect);
             extendItem(rep);
+            if (rep.Organization() === null) {
+                rep.Organization = dataservice.addOrg({ Name: rep.Contacts()[0].LastName(), ID: rep.ID(), Address: "" });
+                dataservice.saveChanges();
+            }
             vm.repCollection.push(rep);
         });
         vm.loadingComplete(true);
@@ -168,7 +180,7 @@
         item.isEditing = ko.observable(false);
 
         // listen for changes with Breeze PropertyChanged event
-        if (typeof(item.entityAspect) === 'function') {
+        if (typeof (item.entityAspect) === 'function') {
             item.entityAspect().propertyChanged.subscribe(function () {
                 if (suspendItemSave) { return; }
                 // give EntityManager time to hear the change
@@ -181,7 +193,7 @@
                 }
             });
         }
-        else{
+        else {
             item.entityAspect.propertyChanged.subscribe(function () {
                 if (suspendItemSave) { return; }
                 // give EntityManager time to hear the change

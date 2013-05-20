@@ -16,6 +16,7 @@
         updateRep: updateRep,
         activateRep: activateRep,
         deleteRep: deleteRep,
+        addOrg: addOrg,
         addOpp: addOpp,
         updateOpp: updateOpp,
         activateOpp: activateOpp,
@@ -33,7 +34,7 @@
 
         var query = breeze.EntityQuery
                 .from('Representatives')
-                .expand('Contacts, Opportunities, Events');
+                .expand('Contacts, Opportunities, Events, Organization');
 
 
         return manager.executeQuery(query);
@@ -55,11 +56,16 @@
 
     }
 
+    function addOrg(data) {
+        return manager.createEntity("Organization", data);
+
+    }
+
     function newContact() {
         return {
             firstName: ko.observable("Johnny"),
             lastName: ko.observable("Test")
-            
+
         };
     }
 
@@ -68,6 +74,7 @@
     }
 
     function updateContact(data) {
+
 
     }
 
@@ -107,7 +114,7 @@
 
         function saveSucceeded(saveResult) {
             //logger.success("# of Todos saved = " + saveResult.entities.length);
-            logger.log(saveResult);
+            logger.info(saveResult);
         }
 
         function saveFailed(error) {

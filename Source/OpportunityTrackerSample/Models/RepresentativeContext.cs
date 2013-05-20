@@ -19,7 +19,13 @@ namespace OpportunityTrackerSample.Models
             Database.SetInitializer(new RepresentativeInitializer());
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Representative>().HasOptional<Organization>(r => r.Organization).WithRequired(o => o.AssociatedRep);
+        }
+
         public DbSet<Representative> Representatives { get; set; }
+        public DbSet<Organization> Organizations { get; set; }
         public DbSet<Opportunity> Opportunities { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Contact> Contacts { get; set; }

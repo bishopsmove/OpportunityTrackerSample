@@ -9,9 +9,19 @@ namespace OpportunityTrackerSample.Models
 {
     public class Organization : EntityBase
     {
+        [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.None)]
+        public override int ID
+        {
+            get;
+            set;
+        }
         public string Name { get; set; }
         public string Address { get; set; }
 
         
+        [ForeignKey("ID")]
+        [InverseProperty("Organization")]
+        public virtual Representative AssociatedRep { get; set; }
     }
 }

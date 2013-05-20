@@ -7,6 +7,7 @@ using System.Text;
 
 namespace OpportunityTrackerSample.Models
 {
+    [Table("ContactInfo")]
     public class ContactInfo : EntityBase
     {
 

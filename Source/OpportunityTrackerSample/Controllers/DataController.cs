@@ -35,6 +35,7 @@ namespace OpportunityTrackerSample.Controllers
         public IQueryable<Representative> Representatives()
         {
             return _contextProvider.Context.Representatives
+                                    .Include(r => r.Organization)
                                     .Include(r => r.Contacts.Select(c => c.ContactInfo))
                                     .Include(r => r.Events)
                                     .Include(r => r.Opportunities);

@@ -347,6 +347,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\clear.cache.gif" />
+    <Content Include="Scripts\app\viewModel2.js" />
     <Content Include="Scripts\breeze.debug.js" />
     <Content Include="Scripts\breeze.intellisense.js" />
     <Content Include="Scripts\breeze.min.js" />
