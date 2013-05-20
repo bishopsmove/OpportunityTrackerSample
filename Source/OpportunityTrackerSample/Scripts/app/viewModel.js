@@ -25,44 +25,44 @@
 
     };
 
-    function repModel(id, contacts, events, opportunities, entityAspect) {
-        this.ID = ko.observable(id || "");
-        //this.isEditing = ko.observable(isEditing);
-        this.contacts = ko.observableArray(ko.utils.arrayMap(contacts, function (contact) {
-            var _contact = new contactModel(contact.FirstName(), contact.LastName(), contact.ContactInfo(), contact.entityAspect);
-            extendItem(_contact);
-            return _contact;
-        }));
-        this.events = ko.observableArray(events);
-        this.opportunities = ko.observableArray(opportunities);
-        this.entityAspect = ko.observable(entityAspect);
+//    function repModel(id, contacts, events, opportunities, entityAspect) {
+//        this.ID = ko.observable(id || "");
+//        //this.isEditing = ko.observable(isEditing);
+//        this.contacts = ko.observableArray(ko.utils.arrayMap(contacts, function (contact) {
+//            var _contact = new contactModel(contact.FirstName(), contact.LastName(), contact.ContactInfo(), contact.entityAspect);
+//            extendItem(_contact);
+//            return _contact;
+//        }));
+//        this.events = ko.observableArray(events);
+//        this.opportunities = ko.observableArray(opportunities);
+//        this.entityAspect = ko.observable(entityAspect);
 
-    }
-
-
-    function contactModel(FirstName, LastName, contactInfo, entityAspect) {
-        //this.isEditing = ko.observable(false);
-        this.FirstName = ko.observable(FirstName || "");
-        this.LastName = ko.observable(LastName || "");
-        this.fullname = ko.computed(function () {
-            return this.FirstName() + " " + this.LastName();
-        }, this);
-        this.contactInfo = ko.observableArray(ko.utils.arrayMap(contactInfo, function (info) {
-            var _info = new contactInfoModel(info.ID(), info.Category(), info.Value(), info.entityAspect);
-            extendItem(_info);
-            return _info;
-        }));
-        this.entityAspect = ko.observable(entityAspect);
+//    }
 
 
-    }
+//    function contactModel(FirstName, LastName, contactInfo, entityAspect) {
+//        //this.isEditing = ko.observable(false);
+//        this.FirstName = ko.observable(FirstName || "");
+//        this.LastName = ko.observable(LastName || "");
+//        this.fullname = ko.computed(function () {
+//            return this.FirstName() + " " + this.LastName();
+//        }, this);
+//        this.contactInfo = ko.observableArray(ko.utils.arrayMap(contactInfo, function (info) {
+//            var _info = new contactInfoModel(info.ID(), info.Category(), info.Value(), info.entityAspect);
+//            extendItem(_info);
+//            return _info;
+//        }));
+//        this.entityAspect = ko.observable(entityAspect);
 
-    function contactInfoModel(id, category, value, entityAspect) {
-        this.id = ko.observable(id);
-        this.category = ko.observable(category);
-        this.value = ko.observable(value);
-        this.entityAspect = ko.observable(entityAspect);
-    }
+
+//    }
+
+//    function contactInfoModel(id, category, value, entityAspect) {
+//        this.id = ko.observable(id);
+//        this.category = ko.observable(category);
+//        this.value = ko.observable(value);
+//        this.entityAspect = ko.observable(entityAspect);
+//    }
 
     ///TODO: Need models for Events and Opportunties, as well, or else need more test data to fill out data scaffolding
 

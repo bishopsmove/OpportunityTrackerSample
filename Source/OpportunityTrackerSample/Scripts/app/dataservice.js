@@ -114,7 +114,7 @@
 
         function saveSucceeded(saveResult) {
             //logger.success("# of Todos saved = " + saveResult.entities.length);
-            logger.info(saveResult);
+            logger.info( "Changes saved for RepID " + saveResult.entities[0].ID());
         }
 
         function saveFailed(error) {
