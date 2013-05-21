@@ -12,10 +12,19 @@
             </hgroup>
             <h2>
             </h2>
-            <form data-bind="submit: addRep">
+            <form data-bind="submit: newEntry">
             <!-- <input style="font-size: larger; box-sizing: border-box" type="submit"  data-bind=" value: newContact, valueUpdate: 'afterkeydown'"
                 placeholder="So... Someone called?"> --> 
-               <input type"submit" data-bind="value: newContact" placeholder="So... Opportunity knocked?"/>
+                <fieldset>
+               @*<label data-bind="text: 'Entry Type:'"></label>
+               
+                <input type="radio" id="typeContact" name="repType" data-bind="value: 'false', checked " /><label for="typeContact" >Contact</label>
+                
+                <input type="radio" id="typeOrg" name="repType" data-bind="value: 'true'" /><label for="typeOrg" >Organization</label>*@
+                
+               <input type"submit" data-bind="value: newEntryText" placeholder="So... Opportunity knocked?"/></fieldset>
+               
+               
                            </form>
         </div>
     </section>
@@ -31,6 +40,18 @@
         </ul>
         <!--ko foreach: { data: repCollection, as: 'rep' } -->
         <div class="tabcontent" data-bind="attr: { id: 'tab-' + ID() }">
+            <div class="ui-widget-header ui-corner-all" data-bind="attr: { id: 'toolbar-' + ID() }">
+            <button data-bind="click: function() { rep.newContact(true); }, html: 'New Contact'"></button>
+            <button data-bind="html: 'New Opp'"></button>
+            </div>
+            <div data-bind="jqDialog: { autoOpen: false, resizable: false, modal: true, width: 350, close: function(){ rep.newContact(false); $( this ).dialog( 'close' );} }, openDialog: rep.newContact()">
+            <form data-bind="submit: $parent.addContact">
+                <fieldset>
+                <input type="text" placeholder="Enter the contact's first and last name here"/>
+                <input type="hidden" data-bind="value: $index" />
+                </fieldset>
+                </form>
+            </div>
             <div data-bind="visible: !rep.isEditing()">
             <h2 data-bind="click: $parent.edit.bind(rep), text: rep.Organization().Name()"></h2>
             </div>
@@ -45,7 +66,7 @@
                         <label data-bind="text: contact.FirstName() + ' ' + contact.LastName()">
                         </label><div id="edit" style="display:none;" ><a href="#" class="ui-button" data-bind=" click: $parents[1].edit.bind(rep), html: 'Edit'"></a></div>
                         <div id="edit" style="display:none;"><a class="button" href="#" data-bind=", html: 'Edit'"></a></div>
-                        <div style="float: right;"  data-bind="foreach: ContactInfo">
+                        <div data-bind="foreach: ContactInfo">
                             <span data-bind="text: Category, click: $parents[2].edit.bind(rep)"></span> <label data-bind="text: Value, click: $parents[2].edit.bind(rep)"></label>
                         </div>
                         
@@ -54,7 +75,7 @@
                         <form data-bind="event: { submit: $parents[1].completeEdit.bind(rep) }">
                         <input type="text" data-bind="value : contact.FirstName, hasfocus: rep.isEditing()" />
                         <input type="text" data-bind="value: contact.LastName, hasfocus: rep.isEditing()" />
-                        <div style="float: right;" data-bind="foreach: ContactInfo">
+                        <div data-bind="foreach: ContactInfo">
                             <input type="text" data-bind="value: Category, hasfocus: rep.isEditing()" />:<input data-bind="value: Value, hasfocus:  rep.isEditing()" />
                         </div>
                         <input type="submit" data-bind="value: 'Done'" />

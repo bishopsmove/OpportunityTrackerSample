@@ -4,11 +4,12 @@
 
 
     var vm = {
-        newRep: ko.observable(),
-        newContact: ko.observable(""),
+
+        newEntry: newEntry,
+        newEntryText: ko.observable(),
+        newRepType: ko.observable(false),
         repCollection: ko.observableArray([]),
         addRep: addRep,
-        updateRep: updateRep,
         activateRep: activateRep,
         deleteRep: deleteRep,
         deleteContact: deleteContact,
@@ -16,53 +17,15 @@
         edit: edit,
         completeEdit: completeEdit,
         loadingComplete: ko.observable(false),
-        getTabName: getTabName
+        addContact: addContact
         //        ,
         //        addOpp: addOpp,
-        //        updateOpp: updateOpp,
         //        activateOpp: activateOpp,
         //        deletOpp: deleteOpp
 
     };
 
-//    function repModel(id, contacts, events, opportunities, entityAspect) {
-//        this.ID = ko.observable(id || "");
-//        //this.isEditing = ko.observable(isEditing);
-//        this.contacts = ko.observableArray(ko.utils.arrayMap(contacts, function (contact) {
-//            var _contact = new contactModel(contact.FirstName(), contact.LastName(), contact.ContactInfo(), contact.entityAspect);
-//            extendItem(_contact);
-//            return _contact;
-//        }));
-//        this.events = ko.observableArray(events);
-//        this.opportunities = ko.observableArray(opportunities);
-//        this.entityAspect = ko.observable(entityAspect);
 
-//    }
-
-
-//    function contactModel(FirstName, LastName, contactInfo, entityAspect) {
-//        //this.isEditing = ko.observable(false);
-//        this.FirstName = ko.observable(FirstName || "");
-//        this.LastName = ko.observable(LastName || "");
-//        this.fullname = ko.computed(function () {
-//            return this.FirstName() + " " + this.LastName();
-//        }, this);
-//        this.contactInfo = ko.observableArray(ko.utils.arrayMap(contactInfo, function (info) {
-//            var _info = new contactInfoModel(info.ID(), info.Category(), info.Value(), info.entityAspect);
-//            extendItem(_info);
-//            return _info;
-//        }));
-//        this.entityAspect = ko.observable(entityAspect);
-
-
-//    }
-
-//    function contactInfoModel(id, category, value, entityAspect) {
-//        this.id = ko.observable(id);
-//        this.category = ko.observable(category);
-//        this.value = ko.observable(value);
-//        this.entityAspect = ko.observable(entityAspect);
-//    }
 
     ///TODO: Need models for Events and Opportunties, as well, or else need more test data to fill out data scaffolding
 
@@ -85,11 +48,19 @@
 
     }
 
-    function getTabName(item) {
+    function newEntry(data) {
 
-        var orgName = ko.observable(item.Organization.Name || item.Contacts()[0].LastName());
-
-        return orgName;
+        if (data === "undefined") return;
+        var entryText = data[3].value;
+        if (vm.newRepType()) {
+            addRep(entryText);
+        }
+        else {
+            addRepContact(entryText);
+        }
+        dataservice.saveChanges();
+        vm.newEntryText("");
+        vm.newRepType(false);
     }
 
     function loadingStatus(status) {
@@ -101,10 +72,7 @@
 
     function initVM() {
         getReps_DS();
-        //        vm.repCollection = ko.util.arrayMap(testData, function (rep) {
-        //            extendItem(rep);
-        //            return new repModel(false, rep.ID, rep.Contacts, rep.Events, rep.Opportunities);
-        //        });
+
     }
 
     function getReps_DS() {
@@ -117,10 +85,9 @@
 
     function querySuccess(data) {
 
-        //ko.utils.arrayForEach(data.XHR.responseJSON, function (rep) {
-        //console.log(rep);
+
         data.results.forEach(function (rep) {
-            //var newRep = new repModel(rep.ID(), rep.Contacts(), rep.Events(), rep.Opportunities(), rep.entityAspect);
+
             extendItem(rep);
             if (rep.Organization() === null) {
                 rep.Organization = dataservice.addOrg({ Name: rep.Contacts()[0].LastName(), ID: rep.ID(), Address: "" });
@@ -136,30 +103,30 @@
         logger.error(error.message, "Query failed");
     }
 
-    function newContact(data) {
+    /*
+    This is specific to creating a Rep and a Contact all at once
+    */
+    function addRepContact(data) {
         var str = data.split(" ");
-        contactModel(data[0] || "Johnny", data[1] || "Test");
+        var firstName = data[0] || "Johnny";
+        var maxLength = data.length;
+        var lastName = data[maxLength - 1] || "Test";
+        var newRep = dataservice.addRep({ Rating: 0 });
+        newRep.Contacts.push(dataservice.addContact({ FirstName: firstName, LastName: lastName }));
+        extendItem(newRep);
+        vm.repCollection.push(newRep);
+
     }
 
     function addRep(data) {
 
 
-        var newRep = dataservice.addRep(
-			new repModel(null, [new contactModel(data)], [], []));
-        //            {
-        //			Contact: function () {
-        //				var data = vm.newContact();
-        //				var str = data.split(" ");
-        //				return new contactModel(data[0] || "Johnny", data[1] || "Test");
-        //			}
-        //		});
+        var newRep = dataservice.addRep({ Rating: 0 });
+        newRep.Organization = dataservice.addOrg({ ID: newRep.ID(), Name: data, Address: "" });
         extendItem(newRep);
         vm.repCollection().push(newRep);
     }
 
-    function updateRep(data) {
-
-    }
 
     function activateRep(data, activate) {
 
@@ -167,6 +134,20 @@
 
     function deleteRep(data) {
 
+    }
+
+    /*
+    This is specific to adding a Contact to existing Rep
+    */
+    function addContact(data) {
+        var entry = data[1].value.split(" ");
+        var index = parseInt(data[2].value);
+        var firstName = entry[0];
+        var maxLength = entry.length;
+        var lastName = entry[maxLength - 1]
+        vm.repCollection()[index].Contacts().push(dataservice.addContact({ FirstName: firstName, LastName: lastName }));
+        dataservice.saveChanges();
+        rep.newContact(false);
     }
 
     function deleteContact(data) {
@@ -177,7 +158,11 @@
     function extendItem(item) {
         if (item.isEditing) return; // already extended
 
+        //hook these observables to specific events/conditions, but they don't go back to the Repo
         item.isEditing = ko.observable(false);
+        item.newContact = ko.observable(false);
+        item.newOpp = ko.observable(false);
+        item.newEvent = ko.observable(false);
 
         // listen for changes with Breeze PropertyChanged event
         if (typeof (item.entityAspect) === 'function') {
@@ -230,6 +215,46 @@ ko.bindingHandlers.jqTabs = {
 		}, 0);
 	}
 };
+
+//ko.bindingHandler.modal = {
+
+//    init: function (element, valueAccesor) {
+//        var options = valueAccesor() || {};
+//        $(element).dialog(options);
+//    },
+//    update: function (element, valueAccessor) {
+//        var value = ko.utils.unwrapObservable(valueAccessor());
+//        if (value) {
+//            $(element).dialog("open");
+//        } else {
+//            $(element).dialog("close");
+//        }
+
+//    }
+//};
+ko.bindingHandlers.jqDialog = {
+    init: function (element, valueAccessor) {
+        var options = ko.utils.unwrapObservable(valueAccessor()) || {};
+
+        //handle disposal
+        ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
+            $(element).dialog("destroy");
+        });
+
+        $(element).dialog(options);
+    }
+};
+
+ko.bindingHandlers.openDialog = {
+    update: function (element, valueAccessor) {
+        var value = ko.utils.unwrapObservable(valueAccessor());
+        if (value) {
+            $(element).dialog("open");
+        } else {
+            $(element).dialog("close");
+        }
+    }
+}
 
 ko.bindingHandlers.hidden = {
     update: function (element, valueAccessor) {

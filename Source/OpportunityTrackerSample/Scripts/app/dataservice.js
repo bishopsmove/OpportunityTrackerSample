@@ -70,7 +70,7 @@
     }
 
     function addContact(data) {
-
+        return manager.createEntity("Contact", data);
     }
 
     function updateContact(data) {
@@ -114,7 +114,9 @@
 
         function saveSucceeded(saveResult) {
             //logger.success("# of Todos saved = " + saveResult.entities.length);
-            logger.info( "Changes saved for RepID " + saveResult.entities[0].ID());
+            if (saveResult.entities.length > 0) {
+                logger.info("Changes saved for RepID " + saveResult.entities[0].ID());
+            }
         }
 
         function saveFailed(error) {
