@@ -27,11 +27,16 @@
             <li><a href="#tab-${ID}" data-bind="attr: { href: '#tab-' + ID() }">
                  <span class="tabimage" data-bind="text: rep.Organization().Name()"></span></a> 
             </li>
-                 <!--<img id="hdrimage" alt="Representative" src="/images/clear.cache.gif">  -->
+                 
         </ul>
         <!--ko foreach: { data: repCollection, as: 'rep' } -->
         <div class="tabcontent" data-bind="attr: { id: 'tab-' + ID() }">
-            <h2 data-bind="text: rep.Organization().Name()"></h2>
+            <div data-bind="visible: !rep.isEditing()">
+            <h2 data-bind="click: $parent.edit.bind(rep), text: rep.Organization().Name()"></h2>
+            </div>
+            <div data-bind="visible: rep.isEditing()">
+            Organization: <input type="text" data-bind="value: rep.Organization().Name, valueUpdate: 'afterkeydown'">
+            </div>
             <!--<label data-bind="text: ID">
             </label>-->
             <ul data-bind="foreach: { data: Contacts, as: 'contact' }">
