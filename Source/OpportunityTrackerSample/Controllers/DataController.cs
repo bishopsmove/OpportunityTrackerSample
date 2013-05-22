@@ -10,8 +10,8 @@ using System.Web;
 using System.Web.Http;
 using Newtonsoft.Json.Linq;
 using Breeze.WebApi;
-using OpportunityTrackerSample.Models;
-using OpportunityTrackerSample.Filters;
+using OpportunityTrackerSample.Entities.Models;
+using OpportunityTrackerSample.Entities.Filters;
 
 namespace OpportunityTrackerSample.Controllers
 {
@@ -36,7 +36,7 @@ namespace OpportunityTrackerSample.Controllers
         {
             return _contextProvider.Context.Representatives
                                     .Include(r => r.Organization)
-                                    .Include(r => r.Contacts.Select(c => c.ContactInfo))
+                                    .Include(r => r.Contacts.Select(c => c.ContactInfo.Select(t => t.Category)))
                                     .Include(r => r.Events)
                                     .Include(r => r.Opportunities)
                                     .OrderBy(r => r.Organization.Name);

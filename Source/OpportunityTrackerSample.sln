@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpportunityTrackerSample", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpportunityTrackerSample.Tests", "OpportunityTrackerSample.Tests\OpportunityTrackerSample.Tests.csproj", "{8195B09A-F865-421C-B6C7-2383C415A258}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpportunityTrackerSample.Entities", "OpportunityTrackerSample.Entities\OpportunityTrackerSample.Entities.csproj", "{D303F902-CA28-41E7-87CA-04B7439ACD0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{8195B09A-F865-421C-B6C7-2383C415A258}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8195B09A-F865-421C-B6C7-2383C415A258}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8195B09A-F865-421C-B6C7-2383C415A258}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D303F902-CA28-41E7-87CA-04B7439ACD0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D303F902-CA28-41E7-87CA-04B7439ACD0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D303F902-CA28-41E7-87CA-04B7439ACD0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D303F902-CA28-41E7-87CA-04B7439ACD0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

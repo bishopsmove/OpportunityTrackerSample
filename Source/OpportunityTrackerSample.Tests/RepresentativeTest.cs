@@ -1,4 +1,4 @@
-﻿using OpportunityTrackerSample.Models;
+﻿using OpportunityTrackerSample.Entities.Models;
 using OpportunityTrackerSample.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;

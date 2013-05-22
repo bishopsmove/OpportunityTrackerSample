@@ -8,8 +8,8 @@ using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
-using OpportunityTrackerSample.Filters;
-using OpportunityTrackerSample.Models;
+using OpportunityTrackerSample.Entities.Filters;
+using OpportunityTrackerSample.Entities.Models;
 
 namespace OpportunityTrackerSample.Controllers
 {

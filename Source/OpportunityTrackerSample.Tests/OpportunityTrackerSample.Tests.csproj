@@ -187,6 +187,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OpportunityTrackerSample.Entities\OpportunityTrackerSample.Entities.csproj">
+      <Project>{D303F902-CA28-41E7-87CA-04B7439ACD0D}</Project>
+      <Name>OpportunityTrackerSample.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpportunityTrackerSample\OpportunityTrackerSample.csproj">
       <Project>{D48F00F4-03A2-4845-85F6-1423B251F448}</Project>
       <Name>OpportunityTrackerSample</Name>

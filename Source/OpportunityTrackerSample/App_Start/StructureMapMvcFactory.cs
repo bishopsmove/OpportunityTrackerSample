@@ -8,7 +8,7 @@ using System.Web.Routing;
 using Breeze.WebApi;
 using StructureMap;
 using StructureMap.Configuration.DSL;
-using OpportunityTrackerSample.Models;
+using OpportunityTrackerSample.Entities.Models;
 
 namespace OpportunityTrackerSample.App_Start
 {
