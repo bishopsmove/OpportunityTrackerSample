@@ -62,12 +62,15 @@
             </label>-->
             <ul data-bind="foreach: { data: Contacts, as: 'contact' }">
                 <li >
-                    <div data-bind="click: $parents[1].edit.bind(rep), visible: !rep.isEditing() ">
+                    <div data-bind="click: $root.edit.bind(rep), visible: !rep.isEditing() ">
                         <label data-bind="text: contact.FirstName() + ' ' + contact.LastName()">
-                        </label><div id="edit" style="display:none;" ><a href="#" class="ui-button" data-bind=" click: $parents[1].edit.bind(rep), html: 'Edit'"></a></div>
+                        </label><div id="edit" style="display:none;" ><a href="#" class="ui-button" data-bind=" click: $root.edit.bind(rep), html: 'Edit'"></a></div>
                         <div id="edit" style="display:none;"><a class="button" href="#" data-bind=", html: 'Edit'"></a></div>
-                        <div data-bind="foreach: ContactInfo">
-                            <span data-bind="text: Category, click: $parents[2].edit.bind(rep)"></span> <label data-bind="text: Value, click: $parents[2].edit.bind(rep)"></label>
+                        <div data-bind="foreach: {data: ContactInfo, as: 'ci' }">
+                        <p>
+                        <!-- Ugly hack #4576: TypeName is not coming across with Category entity. Based on Enum, but this may be an issue specific to .Net4.0 & EF4.4 -->
+                            <span data-bind="text: $root.contactCategories()[0][(ci.Category().ID()-1)].TypeName, click: $root.edit.bind(rep)"></span>: <label data-bind="text: ci.Value, click: $root.edit.bind(rep)"></label>
+                        </p>
                         </div>
                         
                     </div>
@@ -75,8 +78,12 @@
                         <form data-bind="event: { submit: $parents[1].completeEdit.bind(rep) }">
                         <input type="text" data-bind="value : contact.FirstName, hasfocus: rep.isEditing()" />
                         <input type="text" data-bind="value: contact.LastName, hasfocus: rep.isEditing()" />
-                        <div data-bind="foreach: ContactInfo">
-                            <input type="text" data-bind="value: Category, hasfocus: rep.isEditing()" />:<input data-bind="value: Value, hasfocus:  rep.isEditing()" />
+                        <div data-bind="foreach: {data: ContactInfo, as: 'ci' }">
+                        <p>
+                        
+                           <select class="span6" data-bind="options: $parents[2].contactCategories()[0], optionsText: 'TypeName', optionsValue: 'TypeNameValue', value: ci.Category().TypeNameValue"></select> :<input data-bind="value: ci.Value, hasfocus:  rep.isEditing()" />
+                           <!--<input type="text" data-bind="value: Category, hasfocus: rep.isEditing()" /> -->
+                           </p>
                         </div>
                         <input type="submit" data-bind="value: 'Done'" />
                         </form>

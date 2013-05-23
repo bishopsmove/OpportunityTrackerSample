@@ -17,7 +17,8 @@
         edit: edit,
         completeEdit: completeEdit,
         loadingComplete: ko.observable(false),
-        addContact: addContact
+        addContact: addContact,
+        contactCategories: ko.observableArray()
         //        ,
         //        addOpp: addOpp,
         //        activateOpp: activateOpp,
@@ -71,7 +72,9 @@
     }
 
     function initVM() {
+        getContactCategories_DS();
         getReps_DS();
+
 
     }
 
@@ -96,11 +99,23 @@
             vm.repCollection.push(rep);
         });
         vm.loadingComplete(true);
-        logger.info("dataservice returned successfully");
+        logger.info("Representatives returned successfully");
     }
 
     function queryFail(error) {
         logger.error(error.message, "Query failed");
+    }
+
+    function getContactCategories_DS() {
+        dataservice.getContactCategories()
+        .then(cc_Success)
+        .fail(queryFail);
+    }
+
+    function cc_Success(data) {
+        vm.contactCategories.push(data.XHR.responseJSON);
+
+        logger.info("ContactCategories returned successfully");
     }
 
     /*
