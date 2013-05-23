@@ -26,6 +26,7 @@
         updateContact: updateContact,
         activateContact: activateContact,
         deleteContact: deleteContact,
+        getContactCategories: getContactCategories,
         saveChanges: saveChanges
 
     };
@@ -100,6 +101,14 @@
 
     function deleteOpp(data) {
 
+    }
+
+    function getContactCategories() {
+
+        var query = breeze.EntityQuery
+                    .from("ContactCategories");
+
+        return manager.executeQuery(query);
     }
 
     /*

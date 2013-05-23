@@ -41,13 +41,13 @@ namespace OpportunityTrackerSample.Entities.Filters
 
             var contactTypes = ContactType_LookupSeed();
 
-            Array.ForEach(contactTypes, c => context.ContactTypes.Add(c));
+            Array.ForEach(contactTypes, c => context.ContactCategories.Add(c));
 
             var reps = new[] {
                 // VendorId, Date, Value
-                CreateRep("Smith", "Joe", "joe.smith@test.com", "6785551234", "linkedin.com/in/joesmith", context),
-                CreateRep("Smeeth", "Walter", "smeethw@test.org", "4045551234", "linkedin.com/in/waltersmeeth", context),
-                CreateRep("Smythe", "Leslie", "leslie@test.net", "7705551234", "linkedin.com/in/lesliesmythe", context)
+                CreateRep("Smith", "Joe", "joe.smith@test.com", "6785551234", "linkedin.com/in/joesmith", contactTypes),
+                CreateRep("Smeeth", "Walter", "smeethw@test.org", "4045551234", "linkedin.com/in/waltersmeeth", contactTypes),
+                CreateRep("Smythe", "Leslie", "leslie@test.net", "7705551234", "linkedin.com/in/lesliesmythe", contactTypes)
                 
            };
 
@@ -58,7 +58,7 @@ namespace OpportunityTrackerSample.Entities.Filters
             context.SaveChanges(); // Save 'em
         }
 
-        private static Representative CreateRep(string lname, string fname, string email, string phone, string linkedin, RepresentativeContext context)
+        private static Representative CreateRep(string lname, string fname, string email, string phone, string linkedin, ContactCategory[] cats)
         {
             _baseCreatedAtDate = _baseCreatedAtDate.AddMinutes(1);
             var rep = new Representative
@@ -77,20 +77,20 @@ namespace OpportunityTrackerSample.Entities.Filters
             contact.ContactInfo.Add(new ContactInfo{
                 CreateDate = _baseCreatedAtDate,
                 ModifiedDate = _baseCreatedAtDate,
-                Category = context.ContactTypes.Find(1),
+                Category = cats[0],
                 Value = email
             });
             contact.ContactInfo.Add(new ContactInfo{
                 CreateDate = _baseCreatedAtDate,
                 ModifiedDate = _baseCreatedAtDate,
-                Category = context.ContactTypes.Find(2),
+                Category = cats[1],
                 Value = phone
             });
             contact.ContactInfo.Add(new ContactInfo
             {
                 CreateDate = _baseCreatedAtDate,
                 ModifiedDate = _baseCreatedAtDate,
-                Category = context.ContactTypes.Find(6),
+                Category = cats[5],
                 Value = linkedin
             });
 
@@ -99,17 +99,17 @@ namespace OpportunityTrackerSample.Entities.Filters
             return rep;
         }
 
-        private static ContactType[] ContactType_LookupSeed()
+        private static ContactCategory[] ContactType_LookupSeed()
         {
             _baseCreatedAtDate = _baseCreatedAtDate.AddMinutes(1);
-            var email = new ContactType { TypeName = "email", CreateDate = _baseCreatedAtDate, ModifiedDate = _baseCreatedAtDate };
-            var phone = new ContactType { TypeName = "phone", CreateDate = _baseCreatedAtDate, ModifiedDate = _baseCreatedAtDate };
-            var twitter = new ContactType { TypeName = "twitter", CreateDate = _baseCreatedAtDate, ModifiedDate = _baseCreatedAtDate };
-            var github = new ContactType { TypeName = "github", CreateDate = _baseCreatedAtDate, ModifiedDate = _baseCreatedAtDate };
-            var youtube = new ContactType { TypeName = "youtube", CreateDate = _baseCreatedAtDate, ModifiedDate = _baseCreatedAtDate };
-            var linkedin = new ContactType { TypeName = "linkedin", CreateDate = _baseCreatedAtDate, ModifiedDate = _baseCreatedAtDate };
+            var email = new ContactCategory { TypeName = ContactType.email, CreateDate = _baseCreatedAtDate, ModifiedDate = _baseCreatedAtDate };
+            var phone = new ContactCategory { TypeName = ContactType.phone, CreateDate = _baseCreatedAtDate, ModifiedDate = _baseCreatedAtDate };
+            var twitter = new ContactCategory { TypeName = ContactType.twitter, CreateDate = _baseCreatedAtDate, ModifiedDate = _baseCreatedAtDate };
+            var github = new ContactCategory { TypeName = ContactType.github, CreateDate = _baseCreatedAtDate, ModifiedDate = _baseCreatedAtDate };
+            var youtube = new ContactCategory { TypeName = ContactType.google, CreateDate = _baseCreatedAtDate, ModifiedDate = _baseCreatedAtDate };
+            var linkedin = new ContactCategory { TypeName = ContactType.linkedin, CreateDate = _baseCreatedAtDate, ModifiedDate = _baseCreatedAtDate };
 
-            return new ContactType[] {email, phone, twitter, github, youtube, linkedin};
+            return new ContactCategory[] { email, phone, twitter, github, youtube, linkedin };
         }
 
         private static DateTime _baseCreatedAtDate;

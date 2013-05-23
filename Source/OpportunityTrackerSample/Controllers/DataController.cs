@@ -36,10 +36,18 @@ namespace OpportunityTrackerSample.Controllers
         {
             return _contextProvider.Context.Representatives
                                     .Include(r => r.Organization)
-                                    .Include(r => r.Contacts.Select(c => c.ContactInfo.Select(t => t.Category)))
+                                    .Include(r => r.Contacts
+                                        .Select(c => c.ContactInfo
+                                        .Select(cc =>cc.Category)))
                                     .Include(r => r.Events)
                                     .Include(r => r.Opportunities)
                                     .OrderBy(r => r.Organization.Name);
+        }
+
+        [HttpGet]
+        public IQueryable<ContactCategory> ContactCategories()
+        {
+            return _contextProvider.Context.ContactCategories;
         }
 
         

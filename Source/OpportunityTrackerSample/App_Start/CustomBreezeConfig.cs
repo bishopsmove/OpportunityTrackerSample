@@ -14,6 +14,7 @@ namespace OpportunityTrackerSample.App_Start
         {
             var baseSettings = base.CreateJsonSerializerSettings();
             baseSettings.NullValueHandling = NullValueHandling.Include;
+            baseSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
             return baseSettings;
         }
     }
