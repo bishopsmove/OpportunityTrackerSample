@@ -8,8 +8,12 @@ using System.Text;
 
 namespace OpportunityTrackerSample.Entities.Models
 {
-    public class ContactType : EntityBase
+    public class ContactCategory : EntityBase
     {
-        public string TypeName { get; set; }
+        public int TypeNameValue { get; set; }
+        public ContactType TypeName {
+            get { return (ContactType)TypeNameValue; }
+            set { TypeNameValue = (int)value; }
+        }
     }
 }

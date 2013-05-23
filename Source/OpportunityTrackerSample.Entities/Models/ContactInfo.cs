@@ -11,7 +11,7 @@ namespace OpportunityTrackerSample.Entities.Models
     public class ContactInfo : EntityBase
     {
        
-        public ContactType Category { get; set; }
+        public ContactCategory Category { get; set; }
         public string Value { get; set; }
 
         public int ContactID { get; set; }

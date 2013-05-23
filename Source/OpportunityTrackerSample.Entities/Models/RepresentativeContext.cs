@@ -33,7 +33,7 @@ namespace OpportunityTrackerSample.Entities.Models
         public DbSet<Event> Events { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<ContactInfo> ContactInfo { get; set; }
-        public DbSet<ContactType> ContactTypes { get; set; }
+        public DbSet<ContactCategory> ContactCategories { get; set; }
         public DbSet<Note> Notes { get; set; }
         public DbSet<User> Users { get; set; }
 
