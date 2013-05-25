@@ -30,9 +30,9 @@
     </section>
 }
 <section>
-    <img class="icon-spinner icon-2x icon-spin" data-bind="visible: !loadingComplete">
+    @*<i class="icon-spinner icon-2x icon-spin" data-bind="visible: !loadingComplete">*@
     <div data-bind="jqTabs: repCollection, visible: loadingComplete">
-        <ul data-bind="foreach: { data: repCollection, as: 'rep' }">
+        <ul data-bind="foreach: { data: repCollection, as: 'rep' }" >
             <li><a href="#tab-${ID}" data-bind="attr: { href: '#tab-' + ID() }">
                  <span class="tabimage" data-bind="text: rep.Organization().Name()"></span></a> 
             </li>
@@ -40,9 +40,9 @@
         </ul>
         <!--ko foreach: { data: repCollection, as: 'rep' } -->
         <div class="tabcontent" data-bind="attr: { id: 'tab-' + ID() }">
-            <div class="ui-widget-header ui-corner-all" data-bind="attr: { id: 'toolbar-' + ID() }">
-            <button data-bind="click: function() { rep.newContact(true); }, html: 'New Contact'"></button>
-            <button data-bind="html: 'New Opp'"></button>
+            <div class="btn-group" data-bind="attr: { id: 'toolbar-' + ID() }">
+            <a class="btn btn-small" href="#" data-bind="click: function() { rep.newContact(true); }"><i class="icon-user"></i>&nbsp;New Contact</a>
+            <a class="btn btn-small" href="#" ><i class="icon-bolt"></i>&nbsp;New Opp</a>
             </div>
             <div data-bind="jqDialog: { autoOpen: false, resizable: false, modal: true, width: 350, close: function(){ rep.newContact(false); $( this ).dialog( 'close' );} }, openDialog: rep.newContact()">
             <form data-bind="submit: $parent.addContact">
@@ -60,17 +60,18 @@
             </div>
             <!--<label data-bind="text: ID">
             </label>-->
-            <ul data-bind="foreach: { data: Contacts, as: 'contact' }">
+            <ul class="contact" data-bind="foreach: { data: Contacts, as: 'contact' }">
                 <li >
                     <div data-bind="click: $root.edit.bind(rep), visible: !rep.isEditing() ">
                         <label data-bind="text: contact.FirstName() + ' ' + contact.LastName()">
-                        </label><div id="edit" style="display:none;" ><a href="#" class="ui-button" data-bind=" click: $root.edit.bind(rep), html: 'Edit'"></a></div>
-                        <div id="edit" style="display:none;"><a class="button" href="#" data-bind=", html: 'Edit'"></a></div>
+                        </label>
+                        <!--<div id="edit" style="display:none;" ><a href="#" class="ui-button" data-bind=" click: $root.edit.bind(rep), html: 'Edit'"></a></div>
+                        <div id="edit" style="display:none;"><a class="button" href="#" data-bind=", html: 'Edit'"></a></div> -->
                         <div data-bind="foreach: {data: ContactInfo, as: 'ci' }">
-                        <p>
+                        
                         <!-- Ugly hack #4576: TypeName is not coming across with Category entity. Based on Enum, but this may be an issue specific to .Net4.0 & EF4.4 -->
-                            <span data-bind="text: $root.contactCategories()[0][(ci.Category().ID()-1)].TypeName, click: $root.edit.bind(rep)"></span>: <label data-bind="text: ci.Value, click: $root.edit.bind(rep)"></label>
-                        </p>
+                            <i data-bind="attr: { class: 'icon-' + $root.contactCategories()[0][(ci.Category().ID()-1)].TypeName + '-sign pull-left icon-border' }, click: $root.edit.bind(rep)"></i><label data-bind="text: ci.Value, click: $root.edit.bind(rep)"></label>
+                        
                         </div>
                         
                     </div>

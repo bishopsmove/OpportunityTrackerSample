@@ -1266,3 +1266,9 @@ ul.icons-ul > li .icon-li {
 .icon-share-sign:before {
   content: "\f14d";
 }
+
+/* Specific extension for Opportunity Sample */
+
+.icon-email-sign:before {
+  content: "\f0e0";
+}
