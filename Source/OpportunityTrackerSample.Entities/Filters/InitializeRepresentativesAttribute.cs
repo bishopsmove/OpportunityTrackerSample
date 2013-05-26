@@ -45,9 +45,9 @@ namespace OpportunityTrackerSample.Entities.Filters
 
             var reps = new[] {
                 // VendorId, Date, Value
-                CreateRep("Smith", "Joe", "joe.smith@test.com", "6785551234", "linkedin.com/in/joesmith", contactTypes),
-                CreateRep("Smeeth", "Walter", "smeethw@test.org", "4045551234", "linkedin.com/in/waltersmeeth", contactTypes),
-                CreateRep("Smythe", "Leslie", "leslie@test.net", "7705551234", "linkedin.com/in/lesliesmythe", contactTypes)
+                CreateRep("Smith", "Joe", "joe.smith@test.com", "6785551234", "linkedin.com/in/joesmith", 1, 2, contactTypes),
+                CreateRep("Smeeth", "Walter", "smeethw@test.org", "4045551234", "linkedin.com/in/waltersmeeth", 2, 4, contactTypes),
+                CreateRep("Smythe", "Leslie", "leslie@test.net", "7705551234", "linkedin.com/in/lesliesmythe", 3, 2, contactTypes)
                 
            };
 
@@ -58,13 +58,14 @@ namespace OpportunityTrackerSample.Entities.Filters
             context.SaveChanges(); // Save 'em
         }
 
-        private static Representative CreateRep(string lname, string fname, string email, string phone, string linkedin, ContactCategory[] cats)
+        private static Representative CreateRep(string lname, string fname, string email, string phone, string linkedin, int repRating, int contactRating, ContactCategory[] cats)
         {
             _baseCreatedAtDate = _baseCreatedAtDate.AddMinutes(1);
             var rep = new Representative
             {
                 CreateDate = _baseCreatedAtDate,
-                ModifiedDate = _baseCreatedAtDate
+                ModifiedDate = _baseCreatedAtDate,
+                Rating = repRating
             };
 
             var contact = new Contact
@@ -72,7 +73,8 @@ namespace OpportunityTrackerSample.Entities.Filters
                 CreateDate = _baseCreatedAtDate,
                 ModifiedDate = _baseCreatedAtDate,
                 LastName = lname,
-                FirstName = fname
+                FirstName = fname,
+                Rating = contactRating
             };
             contact.ContactInfo.Add(new ContactInfo{
                 CreateDate = _baseCreatedAtDate,
