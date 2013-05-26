@@ -27,3 +27,6 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+Source/OpportunityTrackerSample/App_Data/OpportunityTrackerSample.Entities.Models.RepresentativeContext.mdf
+Source/OpportunityTrackerSample/App_Data/OpportunityTrackerSample.Entities.Models.RepresentativeContext.mdf
+Source/OpportunityTrackerSample/App_Data/OpportunityTrackerSample.Entities.Models.RepresentativeContext_log.ldf
