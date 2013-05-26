@@ -443,6 +443,11 @@ border-radius: 0;
 }
 
 
+.starRating span { width:17px; height:15px; overflow=hidden; background-image: url(/Images/star.gif); display:inline-block; cursor: pointer; background-position: 0 0; }
+.starRating span.chosen { background-position: 0 -16px; }
+.starRating:hover span { background-position: 0 -32px; }
+.starRating:hover span.hoverChosen { background-position: 0 -16px; }
+.starRatingcancel {background: url(/Images/delete.gif) no-repeat 0 -16px;}
 
 
 

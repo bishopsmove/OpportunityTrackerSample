@@ -54,6 +54,8 @@
             </div>
             <div data-bind="visible: !rep.isEditing()">
             <h2 data-bind="click: $parent.edit.bind(rep), text: rep.Organization().Name()"></h2>
+            <label>Representative Rating</label>
+            <div data-bind="starRating: rep.Rating"></div>
             </div>
             <div data-bind="visible: rep.isEditing()">
             Organization: <input type="text" data-bind="value: rep.Organization().Name, valueUpdate: 'afterkeydown'">
@@ -63,8 +65,11 @@
             <ul class="contact" data-bind="foreach: { data: Contacts, as: 'contact' }">
                 <li >
                     <div data-bind="click: $root.edit.bind(rep), visible: !rep.isEditing() ">
+                        
                         <label data-bind="text: contact.FirstName() + ' ' + contact.LastName()">
                         </label>
+                        <label>Contact Rating</label>
+                        <div data-bind="starRating: contact.Rating"></div>
                         <!--<div id="edit" style="display:none;" ><a href="#" class="ui-button" data-bind=" click: $root.edit.bind(rep), html: 'Edit'"></a></div>
                         <div id="edit" style="display:none;"><a class="button" href="#" data-bind=", html: 'Edit'"></a></div> -->
                         <div data-bind="foreach: {data: ContactInfo, as: 'ci' }">

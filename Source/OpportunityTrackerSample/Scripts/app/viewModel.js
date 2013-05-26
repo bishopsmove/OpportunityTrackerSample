@@ -231,6 +231,37 @@ ko.bindingHandlers.jqTabs = {
 	}
 };
 
+//Thanks to rniemeyer for the rating binding bit & jquery.raty for star css and images
+ko.bindingHandlers.starRating = {
+    init: function (element, valueAccessor) {
+        $(element).addClass("starRating");
+        for (var i = 0; i < 5; i++)
+            $("<span>").appendTo(element);
+
+        // Handle mouse events on the stars
+        $("span", element).each(function (index) {
+            $(this).hover(
+                function () { $(this).prevAll().add(this).addClass("hoverChosen") },
+                function () { $(this).prevAll().add(this).removeClass("hoverChosen") }
+            ).click(function () {
+                var observable = valueAccessor();  // Get the associated observable
+                observable(index + 1);               // Write the new rating to it
+            });
+        });
+
+        
+
+
+    },
+    update: function (element, valueAccessor) {
+        // Give the first x stars the "chosen" class, where x <= rating
+        var observable = valueAccessor();
+        $("span", element).each(function (index) {
+            $(this).toggleClass("chosen", index < observable());
+        });
+    }
+};
+
 //ko.bindingHandler.modal = {
 
 //    init: function (element, valueAccesor) {
