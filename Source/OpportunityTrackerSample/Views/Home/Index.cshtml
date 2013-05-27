@@ -43,11 +43,13 @@
             <div class="btn-group" data-bind="attr: { id: 'toolbar-' + ID() }">
             <a class="btn btn-small" href="#" data-bind="click: function() { rep.newContact(true); }"><i class="icon-user"></i>&nbsp;New Contact</a>
             <a class="btn btn-small" href="#" ><i class="icon-bolt"></i>&nbsp;New Opp</a>
+            <a class="btn btn-small" href="#" ><i class="icon-calendar"></i>&nbsp;New Event</a>
             </div>
             <div data-bind="jqDialog: { autoOpen: false, resizable: false, modal: true, width: 350, close: function(){ rep.newContact(false); $( this ).dialog( 'close' );} }, openDialog: rep.newContact()">
             <form data-bind="submit: $parent.addContact">
                 <fieldset>
                 <input type="text" placeholder="Enter the contact's first and last name here"/>
+                <input type="text" placeholder="Organization name (optional)" />
                 <input type="hidden" data-bind="value: $index" />
                 </fieldset>
                 </form>
@@ -91,11 +93,13 @@
                            <!--<input type="text" data-bind="value: Category, hasfocus: rep.isEditing()" /> -->
                            </p>
                         </div>
+                        <a class="btn btn-small" href="#" ><i class="icon-user"></i>&nbsp;New</a>
                         <input type="submit" data-bind="value: 'Done'" />
                         </form>
                     </div>
                 </li>
             </ul>
+            
         </div>
         <!-- /ko -->
     </div>
