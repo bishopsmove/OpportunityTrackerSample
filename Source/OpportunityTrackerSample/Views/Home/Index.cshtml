@@ -48,7 +48,7 @@
             <div data-bind="jqDialog: { autoOpen: false, resizable: false, modal: true, width: 350, close: function(){ rep.newContact(false); $( this ).dialog( 'close' );} }, openDialog: rep.newContact()">
             <form data-bind="submit: $parent.addContact">
                 <fieldset>
-                <input type="text" placeholder="Enter the contact's first and last name here"/>
+                <input type="text" placeholder="Contact's first and last name"/>
                 <input type="text" placeholder="Organization name (optional)" />
                 <input type="hidden" data-bind="value: $index" />
                 </fieldset>
@@ -56,28 +56,33 @@
             </div>
             <div data-bind="visible: !rep.isEditing()">
             <h2 data-bind="click: $parent.edit.bind(rep), text: rep.Organization().Name()"></h2>
-            <label>Representative Rating</label>
+            
+            <label style="font-size:smaller;">OppKnocked Rating</label>
             <div data-bind="starRating: rep.Rating"></div>
+            
             </div>
             <div data-bind="visible: rep.isEditing()">
             Organization: <input type="text" data-bind="value: rep.Organization().Name, valueUpdate: 'afterkeydown'">
             </div>
             <!--<label data-bind="text: ID">
             </label>-->
+            <a href="#" data-bind="click: $root.edit.bind(rep), visible: !rep.isEditing()"><i class="icon-edit-sign"></i>Edit</a>
             <ul class="contact" data-bind="foreach: { data: Contacts, as: 'contact' }">
                 <li >
-                    <div data-bind="click: $root.edit.bind(rep), visible: !rep.isEditing() ">
-                        
+                    <div data-bind=" visible: !rep.isEditing() ">
+                        <!-- click: $root.edit.bind(rep), -->
                         <label data-bind="text: contact.FirstName() + ' ' + contact.LastName()">
                         </label>
-                        <label>Contact Rating</label>
+                        <p>
+                        <label style="font-size:smaller;">OppKnocked Rating</label>
                         <div data-bind="starRating: contact.Rating"></div>
+                        </p>
                         <!--<div id="edit" style="display:none;" ><a href="#" class="ui-button" data-bind=" click: $root.edit.bind(rep), html: 'Edit'"></a></div>
                         <div id="edit" style="display:none;"><a class="button" href="#" data-bind=", html: 'Edit'"></a></div> -->
                         <div data-bind="foreach: {data: ContactInfo, as: 'ci' }">
                         
                         <!-- Ugly hack #4576: TypeName is not coming across with Category entity. Based on Enum, but this may be an issue specific to .Net4.0 & EF4.4 -->
-                            <i data-bind="attr: { class: 'icon-' + $root.contactCategories()[0][(ci.Category().ID()-1)].TypeName + '-sign pull-left icon-border' }, click: $root.edit.bind(rep)"></i><label data-bind="text: ci.Value, click: $root.edit.bind(rep)"></label>
+                            <i data-bind="attr: { class: 'icon-' + $root.contactCategories()[0][(ci.Category().ID()-1)].TypeName + '-sign pull-left icon-border' }"></i><label data-bind="text: ci.Value"></label>
                         
                         </div>
                         
