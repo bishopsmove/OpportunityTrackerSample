@@ -26,6 +26,7 @@
         updateContact: updateContact,
         activateContact: activateContact,
         deleteContact: deleteContact,
+        addContactInfo: addContactInfo,
         getContactCategories: getContactCategories,
         saveChanges: saveChanges
 
@@ -85,6 +86,11 @@
 
     function deleteContact(data) {
 
+    }
+
+        
+    function addContactInfo(data) {
+        return manager.createEntity("ContactInfo", data);
     }
 
     function addOpp(data) {

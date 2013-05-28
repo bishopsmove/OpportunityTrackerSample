@@ -26,6 +26,7 @@
                
                
                            </form>
+            <i class="icon-search"></i>&nbsp;<input type="search" placeholder="Just start typing..." />
         </div>
     </section>
 }
@@ -98,7 +99,8 @@
                            <!--<input type="text" data-bind="value: Category, hasfocus: rep.isEditing()" /> -->
                            </p>
                         </div>
-                        <a class="btn btn-small" href="#" ><i class="icon-user"></i>&nbsp;New</a>
+                        <a class="btn btn-small" href="#" data-bind="click: $root.addContactInfo.bind(contact)" ><i class="icon-user"></i>&nbsp;New</a>
+                        <a class="btn btn-small btn-success" href="#" data-bind="click: function(){ return $(this).closest('form').submit(); }" ><i class="icon-flag-checkered"></i>&nbsp;Done</a>
                         <input type="submit" data-bind="value: 'Done'" />
                         </form>
                     </div>
@@ -113,3 +115,4 @@
                     <a href="#" data-bind="click: reset">Reset</a>*@
     </div>
 </section>
+
