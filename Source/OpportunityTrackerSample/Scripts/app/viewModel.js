@@ -19,7 +19,7 @@
         loadingComplete: ko.observable(false),
         addContact: addContact,
         addContactInfo: addContactInfo,
-        contactCategories: ko.observableArray()
+        contactCategories: ko.observableArray([])
         //        ,
         //        addOpp: addOpp,
         //        activateOpp: activateOpp,
