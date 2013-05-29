@@ -99,7 +99,15 @@
                            <!--<input type="text" data-bind="value: Category, hasfocus: rep.isEditing()" /> -->
                            </p>
                         </div>
-                        <a class="btn btn-small" href="#" data-bind="click: $root.addContactInfo.bind(contact)" ><i class="icon-user"></i>&nbsp;New</a>
+                        <div class="btn-group">
+                        <a class="btn btn-small btn-primary" href="#" ><i class="icon-user"></i>&nbsp;New</a>
+                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="icon-caret-down btn-small"></span></a>
+                        <ul class="dropdown-menu" data-bind="foreach: { data: $root.contactCategories()[0], as: 'cat' }">
+                            <li><a href="#" data-bind="click: $root.addContactInfo.bind(contact)"><i data-bind="attr: { class: 'icon-fixed-width icon-' + cat.TypeName + '-sign' }"></i><label data-bind="text: cat.TypeName"></label></a></li>
+                        </ul>
+                        <!-- data-bind="click: $root.addContactInfo.bind(contact)" -->
+                        </div>
                         <a class="btn btn-small btn-success" href="#" data-bind="click: function(){ return $(this).closest('form').submit(); }" ><i class="icon-flag-checkered"></i>&nbsp;Done</a>
                         <input type="submit" data-bind="value: 'Done'" />
                         </form>
