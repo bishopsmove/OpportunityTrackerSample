@@ -375,7 +375,7 @@ aside {
     .contact ul {
     list-style-type: none;
     }
-
+/*
 .btn {
 display: inline-block;
 padding: 4px 12px;
@@ -502,7 +502,7 @@ box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 background-clip: padding-box;
 }
 
-
+*/
 
 
 .starRating span { width:17px; height:15px; overflow=hidden; background-image: url(/Images/star.gif); display:inline-block; cursor: pointer; background-position: 0 0; }

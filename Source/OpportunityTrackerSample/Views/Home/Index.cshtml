@@ -63,7 +63,7 @@
             
             </div>
             <div data-bind="visible: rep.isEditing()">
-            Organization: <input type="text" data-bind="value: rep.Organization().Name, valueUpdate: 'afterkeydown'">
+            <label>Organization:</label><input type="text" data-bind="value: rep.Organization().Name, valueUpdate: 'afterkeydown'">
             </div>
             <!--<label data-bind="text: ID">
             </label>-->
@@ -99,9 +99,9 @@
                            <!--<input type="text" data-bind="value: Category, hasfocus: rep.isEditing()" /> -->
                            </p>
                         </div>
-                        <div class="btn-group">
+                        <div class="btn-group" data-bind=" attr: { id: 'newMenu' + $index() } ">
                         <a class="btn btn-small btn-primary" href="#" ><i class="icon-user"></i>&nbsp;New</a>
-                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                        <a class="btn btn-primary dropdown-toggle" data-bind="click: function() { $('#newMenu' + $index()).addClass('open'); }" href="#">
                         <span class="icon-caret-down btn-small"></span></a>
                         <ul class="dropdown-menu" data-bind="foreach: { data: $root.contactCategories()[0], as: 'cat' }">
                             <li><a href="#" data-bind="click: $root.addContactInfo.bind(contact)"><i data-bind="attr: { class: 'icon-fixed-width icon-' + cat.TypeName + '-sign' }"></i><label data-bind="text: cat.TypeName"></label></a></li>
