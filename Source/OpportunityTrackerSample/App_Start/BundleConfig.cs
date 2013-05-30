@@ -34,6 +34,7 @@ namespace OpportunityTrackerSample
 
             bundles.Add(new StyleBundle("~/Content/css")
                         .Include("~/Content/site.css")
+                        .Include("~/Content/bootstrap.css")
                         .Include("~/Content/toastr.css")
                         .Include("~/Content/font-awesome.css"));
 
