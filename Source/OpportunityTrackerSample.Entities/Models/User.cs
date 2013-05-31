@@ -12,8 +12,8 @@ namespace OpportunityTrackerSample.Entities.Models
         
         public virtual Contact UserContact { get; set; }
 
-        public virtual ICollection<Representative> Representatives { get; set; }
+        
 
-        public virtual ICollection<Contact> Colleagues { get; set; }
+        
     }
 }

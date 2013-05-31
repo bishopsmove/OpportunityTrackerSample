@@ -89,6 +89,7 @@
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Interfaces\IShareable.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\ContactInfo.cs" />
     <Compile Include="Models\ContactCategory.cs" />

@@ -30,6 +30,8 @@ namespace OpportunityTrackerSample.Entities.Models
         [InverseProperty("AssociatedRep")]
         public virtual ICollection<Opportunity> Opportunities { get; set; }
 
-        
+        public virtual ICollection<Comment> Comments { get; set; }
+
+                
     }
 }

@@ -22,6 +22,7 @@ namespace OpportunityTrackerSample.Entities.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Representative>().HasOptional<Organization>(r => r.Organization).WithRequired(o => o.AssociatedRep);
+            modelBuilder.Entity<User>().HasOptional<Contact>(u => u.UserContact).WithRequired(c => c.ContactUser);
             
             //modelBuilder.Entity<User>().HasOptional<Contact>(u => u.UserContact).WithOptionalDependent(c => c.ContactUser);
         }
@@ -36,6 +37,7 @@ namespace OpportunityTrackerSample.Entities.Models
         public DbSet<ContactCategory> ContactCategories { get; set; }
         public DbSet<Note> Notes { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
     }
 }
