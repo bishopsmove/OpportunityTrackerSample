@@ -24,6 +24,7 @@ namespace OpportunityTrackerSample.Entities.Models
         
         public string LastName { get; set; }
         public string FirstName { get; set; }
+        public string DisplayName { get; set; }
 
         public virtual int Rating { get; set; }
 
@@ -31,18 +32,21 @@ namespace OpportunityTrackerSample.Entities.Models
         [InverseProperty("AssociatedContact")]
         public virtual ICollection<ContactInfo> ContactInfo { get; set; }
 
-        public int RepID { get; set; }
+        public int? RepID { get; set; }
         [ForeignKey("RepID")]
         public Representative AssociatedRep { get; set; }
 
         
-        [ForeignKey("ID")]
+        
+        public virtual int? UserID { get; set; }
         [InverseProperty("UserContact")]
-        public virtual User ContactUser { get; set; }
+        public virtual User ContactUser {get; set;}
 
-        public virtual ICollection<Contact> Colleagues { get; set; }
+        public virtual int? CollegueID { get; set; }
+        [ForeignKey("ID")]
+        public virtual Colleagues Colleagues { get; set; }
 
-        public virtual ICollection<Representative> Representatives { get; set; }
+        //public virtual ICollection<Representative> Representatives { get; set; }
 
         
 

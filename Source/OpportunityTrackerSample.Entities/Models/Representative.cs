@@ -21,6 +21,7 @@ namespace OpportunityTrackerSample.Entities.Models
 
         [InverseProperty("AssociatedRep")]
         public virtual Organization Organization { get; set; }
+        [ForeignKey("ID")]
         [InverseProperty("AssociatedRep")]
         public virtual ICollection<Contact> Contacts { get; set; }
 

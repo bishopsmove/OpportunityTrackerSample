@@ -12,8 +12,8 @@ namespace OpportunityTrackerSample.Entities.Models
         string Brief { get; set; }
         string Body { get; set; }
 
-        public int CommentUserID { get; set; }
-        [ForeignKey("CommentUserID")]
-        public User CommentUser { get; set; }
+        public int CommentContactID { get; set; }
+        [ForeignKey("CommentContactID")]
+        public Contact CommentContact { get; set; }
     }
 }

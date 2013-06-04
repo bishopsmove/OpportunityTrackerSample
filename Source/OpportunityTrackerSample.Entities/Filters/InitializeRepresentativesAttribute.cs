@@ -26,9 +26,10 @@ namespace OpportunityTrackerSample.Entities.Filters
 
     }
 
-    public class RepresentativeInitializer : //DropCreateDatabaseAlways<RepresentativeContext>
-       DropCreateDatabaseIfModelChanges<RepresentativeContext>
+    public class RepresentativeInitializer : DropCreateDatabaseAlways<RepresentativeContext>
+       //DropCreateDatabaseIfModelChanges<RepresentativeContext>
     {
+        private static DateTime _baseCreatedAtDate;
 
         protected override void Seed(RepresentativeContext context)
         {
@@ -42,6 +43,17 @@ namespace OpportunityTrackerSample.Entities.Filters
             var contactTypes = ContactType_LookupSeed();
 
             Array.ForEach(contactTypes, c => context.ContactCategories.Add(c));
+
+            var users = new[] {
+                CreateUser("User1", "Tester", "tester.user1@test.com", "Tester1", "tester1", false),
+                CreateUser("User2", "Tester", "tester.user2@test.com", "Tester2", "tester2", false),
+                CreateUser("User3", "Tester", "tester.user3@test.com", "Tester3", "tester3", false),
+                CreateUser("User4", "Tester", "tester.user4@test.com", "Tester4", "tester4", false)
+            };
+
+            Array.ForEach(users, u => context.Users.Add(u));
+
+            context.SaveChanges();
 
             var reps = new[] {
                 // VendorId, Date, Value
@@ -65,7 +77,7 @@ namespace OpportunityTrackerSample.Entities.Filters
             {
                 CreateDate = _baseCreatedAtDate,
                 ModifiedDate = _baseCreatedAtDate,
-                Rating = repRating
+                Rating = repRating, 
             };
 
             var contact = new Contact
@@ -114,7 +126,27 @@ namespace OpportunityTrackerSample.Entities.Filters
             return new ContactCategory[] { email, phone, twitter, github, youtube, linkedin };
         }
 
-        private static DateTime _baseCreatedAtDate;
+        private static User CreateUser(string lastName, string firstName, string email, string displayName, string password, bool externalAuth)
+        {
+            var newUser = new User { Password=password, ExternalAuth=externalAuth, CreateDate = _baseCreatedAtDate, ModifiedDate = _baseCreatedAtDate };
+
+            var newContact = new Contact
+            {
+                LastName = lastName,
+                FirstName = firstName,
+                DisplayName = displayName,
+                Rating = 0,
+                CreateDate = _baseCreatedAtDate,
+                ModifiedDate = _baseCreatedAtDate
+            };
+
+            newContact.ContactInfo.Add(new ContactInfo { Category = new ContactCategory { TypeName = ContactType.email }, Value = email, CreateDate = _baseCreatedAtDate, ModifiedDate = _baseCreatedAtDate });
+            newUser.UserContact = newContact;
+
+            return newUser;
+        }
+
+        
 
         public static void PurgeDatabase(RepresentativeContext context)
         {

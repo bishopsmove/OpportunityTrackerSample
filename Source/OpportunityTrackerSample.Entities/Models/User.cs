@@ -10,10 +10,13 @@ namespace OpportunityTrackerSample.Entities.Models
     public class User : EntityBase
     {
         
+        
+        
+        [InverseProperty("ContactUser")]
         public virtual Contact UserContact { get; set; }
 
-        
+        public string Password { get; set; }
 
-        
+        public bool ExternalAuth { get; set; }
     }
 }
