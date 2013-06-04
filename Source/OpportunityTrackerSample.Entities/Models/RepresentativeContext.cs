@@ -22,7 +22,14 @@ namespace OpportunityTrackerSample.Entities.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Representative>().HasOptional<Organization>(r => r.Organization).WithRequired(o => o.AssociatedRep);
-            modelBuilder.Entity<User>().HasOptional<Contact>(u => u.UserContact).WithRequired(c => c.ContactUser);
+            modelBuilder.Entity<Representative>().HasMany<Contact>(r => r.Contacts).WithOptional(c => c.AssociatedRep);
+            modelBuilder.Entity<User>().HasRequired(u => u.UserContact).WithOptional(c => c.ContactUser).WillCascadeOnDelete(false);
+            modelBuilder.Entity<Contact>().HasOptional<Representative>(c => c.AssociatedRep).WithMany(r => r.Contacts);
+            modelBuilder.Entity<Contact>().HasOptional<Colleagues>(c => c.Colleagues).WithMany(c => c.Contacts);
+            modelBuilder.Entity<Contact>().HasOptional<User>(c => c.ContactUser).WithRequired(u => u.UserContact);
+            
+
+            //modelBuilder.Entity<Contact>().HasOptional<User>(c => c.ContactUser).WithRequired(u => u.UserContact);
             
             //modelBuilder.Entity<User>().HasOptional<Contact>(u => u.UserContact).WithOptionalDependent(c => c.ContactUser);
         }
@@ -38,6 +45,7 @@ namespace OpportunityTrackerSample.Entities.Models
         public DbSet<Note> Notes { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Colleagues> Colleagues { get; set; }
 
     }
 }
